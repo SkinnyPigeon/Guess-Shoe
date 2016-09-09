@@ -111,7 +111,7 @@ var blackHeelBootOpenToe = {
 }
 
 var blackHeeledLaces = {
-  name: "Impossible Heel",
+  name: "Impossible Heel - Black",
   image: "./css/image/black-heeled-laces.jpg",
   colour: "Black",
   flat: false,
@@ -127,7 +127,7 @@ var blackHeeledLaces = {
 }
 
 var blackHeeledToe = {
-  name: "Also Available With Presnapped Heel",
+  name: "Black Shoe Also Available With Presnapped Heel",
   image: "./css/image/black-heeled-toe.jpg",
   colour: "Black",
   flat: false,
@@ -139,6 +139,86 @@ var blackHeeledToe = {
   studded: false,
   buckle: false,
   openToe: true,
+  openHeel: false
+}
+
+var blackOpenHeel = {
+  name: "Not Too Bad, Standard Black Shoe",
+  image: "./css/image/black-open-heel.jpg",
+  colour: "Black",
+  flat: false,
+  bigHeel: false,
+  smallHeel: false,
+  boot: false,
+  wedge: false,
+  laces: false,
+  studded: false,
+  buckle: false,
+  openToe: false,
+  openHeel: false
+}
+
+var brownBuckleHeeledBoot = {
+  name: "Needless Brown Boot With Too Many Buckles",
+  image: "./css/image/brown-buckle-heeled-boot.jpg",
+  colour: "Brown",
+  flat: false,
+  bigHeel: true,
+  smallHeel: false,
+  boot: true,
+  wedge: false,
+  laces: false,
+  studded: false,
+  buckle: true,
+  openToe: false,
+  openHeel: false
+}
+
+var brownHeeledStuddedOpenToe = {
+  name: "Just Stop Making Shoes Like This",
+  image: "./css/image/brown-heeled-studded-open-toe.jpg",
+  colour: "Brown",
+  flat: false,
+  bigHeel: true,
+  smallHeel: false,
+  boot: false,
+  wedge: false,
+  laces: false,
+  studded: true,
+  buckle: false,
+  openToe: true,
+  openHeel: false
+}
+
+var brownOpenToeLaces = {
+  name: "Fancy Gladiator",
+  image: "./css/image/brown-open-toe-laces.jpg",
+  colour: "Brown",
+  flat: true,
+  bigHeel: false,
+  smallHeel: false,
+  boot: false,
+  wedge: false,
+  laces: true,
+  studded: false,
+  buckle: false,
+  openToe: true,
+  openHeel: false
+}
+
+var brownWedge = {
+  name: "Hill Walk In Style",
+  image: "./css/image/brown-wedge.jpg",
+  colour: "Brown",
+  flat: false,
+  bigHeel: false,
+  smallHeel: false,
+  boot: false,
+  wedge: true,
+  laces: false,
+  studded: false,
+  buckle: false,
+  openToe: false,
   openHeel: false
 }
 
