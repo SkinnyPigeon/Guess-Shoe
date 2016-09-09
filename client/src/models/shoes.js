@@ -15,7 +15,7 @@ var beigeHeeledBoot = {
 }
 
 var beigeLowBootStudded = {
-  name: "Spikey Balsa-Wood Heeled Boot (Beige)",
+  name: "Spikey Balsa-Wood Heeled Boot",
   image: "./css/image/beige-low-boot-studded",
   colour: "Beige",
   flat: false,
@@ -31,7 +31,7 @@ var beigeLowBootStudded = {
 }
 
 var beigeOpenToeBuckleStuddedHeel = {
-  name: "Impractical Plus Beige Bleugh",
+  name: "Impractical",
   image: "./css/image/beige-open-toe-buckle-studded-heel.jpg",
   colour: "Beige",
   flat: false,
@@ -63,7 +63,7 @@ var beigeOpenToeOpenHeelWedge = {
 }
 
 var beigeWedgeBoot = {
-  name: "Tiptoe Sweat Boxes - Beige",
+  name: "Tiptoe Sweat Boxes",
   image: "./css/image/beige-wedge-boot.jpg",
   colour: "Beige",
   flat: false,
@@ -111,7 +111,7 @@ var blackHeelBootOpenToe = {
 }
 
 var blackHeeledLaces = {
-  name: "Impossible Heel - Black",
+  name: "Impossible Heel",
   image: "./css/image/black-heeled-laces.jpg",
   colour: "Black",
   flat: false,
@@ -127,7 +127,7 @@ var blackHeeledLaces = {
 }
 
 var blackHeeledToe = {
-  name: "Black Shoe Also Available With Presnapped Heel",
+  name: "A Long Way To Fall",
   image: "./css/image/black-heeled-toe.jpg",
   colour: "Black",
   flat: false,
@@ -159,7 +159,7 @@ var blackOpenHeel = {
 }
 
 var brownBuckleHeeledBoot = {
-  name: "Needless Brown Boot With Too Many Buckles",
+  name: "Needless Boot With Too Many Buckles",
   image: "./css/image/brown-buckle-heeled-boot.jpg",
   colour: "Brown",
   flat: false,
@@ -175,7 +175,7 @@ var brownBuckleHeeledBoot = {
 }
 
 var brownHeeledStuddedOpenToe = {
-  name: "Just Stop Making Shoes Like This",
+  name: "The Ball Crusher",
   image: "./css/image/brown-heeled-studded-open-toe.jpg",
   colour: "Brown",
   flat: false,
@@ -302,21 +302,86 @@ var redWedge = {
   openHeel: false
 }
 
+var whiteFlatLaces = {
+  name: "Plain Bowling Shoe",
+  image: "./css/image/white-flat-laces.jpg",
+  colour: "White",
+  flat: true,
+  bigHeel: false,
+  smallHeel: false,
+  boot: false,
+  wedge: false,
+  laces: true,
+  studded: false,
+  buckle: false,
+  openToe: false,
+  openHeel: false
+}
 
+var whiteLacesOpenToeFlat = {
+  name: "Missing A Few Bits",
+  image: "./css/image/white-laces-open-toe-flat.jpg",
+  colour: "White",
+  flat: true,
+  bigHeel: false,
+  smallHeel: false,
+  boot: false,
+  wedge: false,
+  laces: true,
+  studded: false,
+  buckle: false,
+  openToe: true,
+  openHeel: false
+}
 
+var whiteLowLaced = {
+  name: "The Dolly",
+  image: "./css/image/white-low-laced.jpg",
+  colour: "White",
+  flat: false,
+  bigHeel: false,
+  smallHeel: true,
+  boot: false,
+  wedge: false,
+  laces: true,
+  studded: false,
+  buckle: false,
+  openToe: false,
+  openHeel: false
+}
 
-flat: false,
-bigHeel: false,
-smallHeel: false,
-boot: false,
-wedge: false,
-laces: false,
-studded: false,
-buckle: false,
-openToe: false,
-openHeel: false
+var whiteLowOpenHeeledBuckle = {
+  name: "They Look Fine",
+  image: "./css/image/white-low-open-heeled-buckle.jpg",
+  colour: "White",
+  flat: false,
+  bigHeel: false,
+  smallHeel: true,
+  boot: false,
+  wedge: false,
+  laces: false,
+  studded: false,
+  buckle: true,
+  openToe: false,
+  openHeel: true
+}
 
+var whiteWedgeStudded = {
+  name: "Nike Gone Mad",
+  image: "./css/image/white-wedge-studded.jpg",
+  colour: "White",
+  flat: false,
+  bigHeel: false,
+  smallHeel: false,
+  boot: false,
+  wedge: true,
+  laces: false,
+  studded: true,
+  buckle: false,
+  openToe: false,
+  openHeel: false
+}
 
+var shoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded ];
 
-
-
+module.exports = shoe;
