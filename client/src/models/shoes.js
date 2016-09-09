@@ -222,6 +222,86 @@ var brownWedge = {
   openHeel: false
 }
 
+var redBootHeeledToe = {
+  name: "Rocky Horror",
+  image: "./css/image/red-boot-heeled-toe.jpg",
+  colour: "Red",
+  flat: false,
+  bigHeel: true,
+  smallHeel: false,
+  boot: true,
+  wedge: false,
+  laces: false,
+  studded: false,
+  buckle: false,
+  openToe: true,
+  openHeel: false
+}
+
+var redHeeledLaces = {
+  name: "Scarlet Pimpernel",
+  image: "./css/image/red-heeled-laces.jpg",
+  colour: "Red",
+  flat: false,
+  bigHeel: true,
+  smallHeel: false,
+  boot: false,
+  wedge: false,
+  laces: true,
+  studded: false,
+  buckle: false,
+  openToe: false,
+  openHeel: false
+}
+
+var redOpenHeelBuckle = {
+  name: "Scarlet Pimpernel",
+  image: "./css/image/red-open-heel-buckle.jpg",
+  colour: "Red",
+  flat: true,
+  bigHeel: false,
+  smallHeel: false,
+  boot: false,
+  wedge: false,
+  laces: false,
+  studded: false,
+  buckle: true,
+  openToe: false,
+  openHeel: true
+}
+
+var redWedgeBoot = {
+  name: "The Eddie Izzard",
+  image: "./css/image/red-wedge-boot.jpg",
+  colour: "Red",
+  flat: false,
+  bigHeel: false,
+  smallHeel: false,
+  boot: true,
+  wedge: true,
+  laces: false,
+  studded: false,
+  buckle: false,
+  openToe: false,
+  openHeel: false
+}
+
+var redWedge = {
+  name: "Too Busy",
+  image: "./css/image/red-wedge.jpg",
+  colour: "Red",
+  flat: false,
+  bigHeel: false,
+  smallHeel: false,
+  boot: false,
+  wedge: true,
+  laces: false,
+  studded: false,
+  buckle: false,
+  openToe: false,
+  openHeel: false
+}
+
 
 
 
