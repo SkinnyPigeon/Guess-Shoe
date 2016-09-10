@@ -37721,6 +37721,30 @@
 	    }
 	  },
 	
+	  onStyleChange: function onStyleChange(event) {
+	    var array = this.props.game.playerArray[1];
+	    for (var i = 0; i < array.length; i++) {
+	      var playerLogic = new Logic(array[i]);
+	      var opponentLogic = new Logic(this.state.opponentShoe);
+	      var value = event.target.value;
+	      playerLogic.handleColourGuess(value);
+	      opponentLogic.handleColourGuess(value);
+	      this.hideWrongShoes(array[i], i, value);
+	    }
+	  },
+	
+	  onDecorationChange: function onDecorationChange(event) {
+	    var array = this.props.game.playerArray[1];
+	    for (var i = 0; i < array.length; i++) {
+	      var playerLogic = new Logic(array[i]);
+	      var opponentLogic = new Logic(this.state.opponentShoe);
+	      var value = event.target.value;
+	      playerLogic.handleColourGuess(value);
+	      opponentLogic.handleColourGuess(value);
+	      this.hideWrongShoes(array[i], i, value);
+	    }
+	  },
+	
 	  hideWrongShoes: function hideWrongShoes(shoe, index) {
 	    var display = document.getElementById(index);
 	    if (shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true) {
@@ -37732,8 +37756,8 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard, hideWrongShoes: this.hideWrongShoes }),
-	      React.createElement(WhoQuestioner, { onColourChange: this.onColourChange })
+	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard }),
+	      React.createElement(WhoQuestioner, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange })
 	    );
 	  }
 	
@@ -37840,17 +37864,17 @@
 	      React.createElement(
 	        'option',
 	        { value: 'BEIGE' },
-	        'Are They Beige?'
+	        'Do They Have A Small Heel?'
 	      ),
 	      React.createElement(
 	        'option',
 	        { value: 'WHITE' },
-	        'Are They White?'
+	        'Are They Wedges?'
 	      ),
 	      React.createElement(
 	        'option',
 	        { value: 'BROWN' },
-	        'Are They Brown?'
+	        'Are They Boots?'
 	      )
 	    ),
 	    React.createElement(
@@ -37864,27 +37888,27 @@
 	      React.createElement(
 	        'option',
 	        { value: 'RED' },
-	        'Are They Red?'
+	        'Do They Have A Buckle?'
 	      ),
 	      React.createElement(
 	        'option',
 	        { value: 'BLACK' },
-	        'Are They Black?'
+	        'Do They Have Laces?'
 	      ),
 	      React.createElement(
 	        'option',
 	        { value: 'BEIGE' },
-	        'Are They Beige?'
+	        'Are They Studded?'
 	      ),
 	      React.createElement(
 	        'option',
 	        { value: 'WHITE' },
-	        'Are They White?'
+	        'Do They Have Open Toes?'
 	      ),
 	      React.createElement(
 	        'option',
 	        { value: 'BROWN' },
-	        'Are They Brown?'
+	        'Do They Have Open Heels?'
 	      )
 	    )
 	  );

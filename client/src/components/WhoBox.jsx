@@ -32,6 +32,30 @@ var WhoBox = React.createClass({
     }
   },
 
+  onStyleChange: function( event ) {
+    var array = this.props.game.playerArray[1];
+    for( var i = 0; i < array.length; i++ ) {
+      var playerLogic = new Logic( array[i] );
+      var opponentLogic = new Logic( this.state.opponentShoe );
+      var value = event.target.value;
+      playerLogic.handleColourGuess( value );
+      opponentLogic.handleColourGuess( value );
+      this.hideWrongShoes( array[i], i, value );
+    }
+  },
+
+  onDecorationChange: function( event ) {
+    var array = this.props.game.playerArray[1];
+    for( var i = 0; i < array.length; i++ ) {
+      var playerLogic = new Logic( array[i] );
+      var opponentLogic = new Logic( this.state.opponentShoe );
+      var value = event.target.value;
+      playerLogic.handleColourGuess( value );
+      opponentLogic.handleColourGuess( value );
+      this.hideWrongShoes( array[i], i, value );
+    }
+  },
+
   hideWrongShoes: function( shoe, index ) {
     var display = document.getElementById( index )
     if( shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true ) {
@@ -42,8 +66,8 @@ var WhoBox = React.createClass({
   render: function() {
     return(
       <div>
-        <WhoViewer shoes={ this.state.shoes } onDblClick={ this.pickPlayerCard } onClick={ this.eliminateCard } hideWrongShoes={ this.hideWrongShoes }/>
-        <WhoQuestioner onColourChange={ this.onColourChange } />
+        <WhoViewer shoes={ this.state.shoes } onDblClick={ this.pickPlayerCard } onClick={ this.eliminateCard } />
+        <WhoQuestioner onColourChange={ this.onColourChange } onStyleChange={ this.onStyleChange } onDecorationChange={ this.onDecorationChange }/>
       </div>
     )
   }
