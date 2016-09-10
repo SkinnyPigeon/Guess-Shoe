@@ -43,7 +43,21 @@ Logic.prototype = {
   },
 
   handleDecorationGuess: function( decoration ) {
-    
+    if( this.shoe.buckle && decoration === "BUCKLE" ) {
+      return true;
+    }
+    if( this.shoe.laces && decoration === "LACES" ) {
+      return true;
+    }
+    if( this.shoe.studded && decoration === "STUDDED" ) {
+      return true;
+    }
+    if( this.shoe.openToe && decoration === "OPEN TOES" ) {
+      return true;
+    }
+    if( this.shoe.openHeel && decoration === "OPEN HEELS" ) {
+      return true;
+    }
   }
 
 }
