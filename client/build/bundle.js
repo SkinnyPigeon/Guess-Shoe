@@ -20912,9 +20912,11 @@
 	  endTurn: function endTurn() {
 	    if (this.currentPlayer === 0) {
 	      this.currentPlayer = 1;
+	      return;
 	    }
 	    if (this.currentPlayer === 1) {
 	      this.currentPlayer = 0;
+	      return;
 	    }
 	  },
 	
@@ -37718,6 +37720,7 @@
 	  },
 	
 	  onColourChange: function onColourChange(event) {
+	    this.props.game.endTurn();
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
 	      var playerLogic = new Logic(array[i]);
@@ -37729,7 +37732,33 @@
 	    }
 	  },
 	
+	  handleTurnDisplay: function handleTurnDisplay() {
+	    var colourQuestion = document.getElementById('colour-question');
+	    var styleQuestion = document.getElementById('style-question');
+	    var colourQuestion = document.getElementById('colour-question');
+	    // var computerQuesitons = document.getElementsByClassName( 'computer-questions' );
+	    if (this.props.game.currentPlayer === 0) {
+	      colourQuestion.style.opacity = '1';
+	      colourQuestion.style.pointerEvents = 'auto';
+	
+	      styleQuestion.style.opacity = '1';
+	      styleQuestion.style.pointerEvents = 'auto';
+	      // computerQuesitons.style.display = 'none';
+	    }
+	
+	    if (this.props.game.currentPlayer === 1) {
+	      colourQuestion.style.pointerEvents = 'none';
+	      colourQuestion.style.opacity = '0';
+	
+	      styleQuestion.style.pointerEvents = 'none';
+	      styleQuestion.style.opacity = '0';
+	
+	      // computerQuesitons.style.display = 'block';
+	    }
+	  },
+	
 	  onStyleChange: function onStyleChange(event) {
+	    this.props.game.endTurn();
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
 	      var playerLogic = new Logic(array[i]);
@@ -37742,6 +37771,7 @@
 	  },
 	
 	  onDecorationChange: function onDecorationChange(event) {
+	    this.props.game.endTurn();
 	    console.log(event.target.value);
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
@@ -37762,13 +37792,13 @@
 	    if (shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true) {
 	      display.className = "eliminated";
 	    }
+	    this.handleTurnDisplay();
 	  },
 	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(WhoPick, { shoes: this.state.shoes, onClick: this.pickPlayerCard }),
 	      React.createElement(WhoViewer, { shoes: this.state.shoes, onClick: this.eliminateCard }),
 	      React.createElement(WhoClues, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange })
 	    );

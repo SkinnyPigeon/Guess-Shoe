@@ -25,9 +25,11 @@ Game.prototype = {
   endTurn: function() {
     if( this.currentPlayer === 0) {
       this.currentPlayer = 1;
+      return;
     }
     if( this.currentPlayer === 1 ) {
       this.currentPlayer = 0;
+      return;
     }
   },
 

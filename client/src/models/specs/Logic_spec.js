@@ -88,7 +88,7 @@ describe( 'The Logic: ', function() {
   });
 
   it( 'Should be able to tell if a shoe has open toes', function() {
-    var logic = new Logic( shoes[2]);
+    var logic = new Logic( shoes[3]);
     var answer = logic.handleDecorationGuess( 'OPEN TOES' );
     assert.equal( true, answer );
   });
