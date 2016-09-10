@@ -22,3 +22,7 @@ img:hover {
   box-shadow: 2px 2px 1px grey;
 }
 
+p {
+  font-size: 0.05em;
+}
+

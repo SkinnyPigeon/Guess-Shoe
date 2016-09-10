@@ -8,6 +8,7 @@ var WhoBox = require( './components/WhoBox' );
 window.onload = function(){
 
   var game = new Game( playerShoes, opponentShoes );
+  game.opponentPickCard();
 
   ReactDOM.render(
     <WhoBox game={ game }/>,

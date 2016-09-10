@@ -7,7 +7,7 @@ console.log( props );
 
     var imageNodes = props.shoes.map( function( shoe, index ) {
       return(
-        <img src={ shoe.image } index={ index } key={ index } />
+          <img src={ shoe.image } index={ index } key={ index } value={ index } id={ index } onDoubleClick={ props.onDblClick }/>
         )
     })
 

@@ -56,6 +56,7 @@
 	window.onload = function () {
 	
 	  var game = new Game(playerShoes, opponentShoes);
+	  game.opponentPickCard();
 	
 	  ReactDOM.render(React.createElement(WhoBox, { game: game }), document.getElementById('app'));
 	};
@@ -37688,11 +37689,18 @@
 	    return { game: this.props.game, shoes: this.props.game.playerArray[0] };
 	  },
 	
+	  pickPlayerCard: function pickPlayerCard(event) {
+	    console.log(event.target.id);
+	    var index = event.target.id;
+	    console.log(index);
+	    this.props.game.playerPickCard(index);
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(WhoViewer, { shoes: this.state.shoes })
+	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard })
 	    );
 	  }
 	
@@ -37720,7 +37728,7 @@
 	  }
 	
 	  var imageNodes = props.shoes.map(function (shoe, index) {
-	    return React.createElement('img', { src: shoe.image, index: index, key: index });
+	    return React.createElement('img', { src: shoe.image, index: index, key: index, value: index, id: index, onDoubleClick: props.onDblClick });
 	  });
 	
 	  return React.createElement(
