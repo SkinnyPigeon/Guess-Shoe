@@ -69,6 +69,36 @@ describe( 'The Logic: ', function() {
     assert.equal( true, answer );
   });
 
+  it( 'Should be able to tell if a shoe has a buckle', function() {
+    var logic = new Logic( shoes[2]);
+    var answer = logic.handleDecorationGuess( 'BUCKLE' );
+    assert.equal( true, answer );
+  });
+
+  it( 'Should be able to tell if a shoe has laces', function() {
+    var logic = new Logic( shoes[7]);
+    var answer = logic.handleDecorationGuess( 'LACES' );
+    assert.equal( true, answer );
+  });
+
+  it( 'Should be able to tell if a shoe has studs', function() {
+    var logic = new Logic( shoes[1]);
+    var answer = logic.handleDecorationGuess( 'STUDDED' );
+    assert.equal( true, answer );
+  });
+
+  it( 'Should be able to tell if a shoe has open toes', function() {
+    var logic = new Logic( shoes[2]);
+    var answer = logic.handleDecorationGuess( 'OPEN TOES' );
+    assert.equal( true, answer );
+  });
+
+  it( 'Should be able to tell if a shoe has open heels', function() {
+    var logic = new Logic( shoes[3]);
+    var answer = logic.handleDecorationGuess( 'OPEN HEELS' );
+    assert.equal( true, answer );
+  });
+
 });
 
 

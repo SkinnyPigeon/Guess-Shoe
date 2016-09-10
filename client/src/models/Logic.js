@@ -42,6 +42,10 @@ Logic.prototype = {
     }
   },
 
+  handleDecorationGuess: function( decoration ) {
+    
+  }
+
 }
 
 module.exports = Logic;
