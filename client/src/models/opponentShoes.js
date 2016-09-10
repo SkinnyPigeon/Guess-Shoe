@@ -550,6 +550,6 @@ var whiteWedgeStudded = {
   openHeel: false
 }
 
-var shoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded ];
+var opponentShoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded ];
 
-module.exports = shoes;
+module.exports = opponentShoes;

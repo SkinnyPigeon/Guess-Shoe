@@ -1,4 +1,4 @@
-var shoes = require( './shoes' );
+var shoes = require( './playerShoes' );
 
 var Logic = function( shoe ) {
   this.shoe = shoe;

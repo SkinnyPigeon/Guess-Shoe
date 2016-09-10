@@ -1,5 +1,5 @@
 var Logic = require( '../Logic' );
-var shoes = require( '../shoes' );
+var shoes = require( '../playerShoes' );
 var assert = require( 'chai' ).assert;
 
 describe( 'The Logic: ', function() {
