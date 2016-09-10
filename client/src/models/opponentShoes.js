@@ -1,6 +1,6 @@
 var beigeHeeledBoot = {
   name: "Puffy Ugly Beige Shoe",
-  image: "./css/image/beige-heeled-boot.jpg",
+  image: "/images/beige-heeled-boot.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -23,7 +23,7 @@ var beigeHeeledBoot = {
 
 var beigeLowBootStudded = {
   name: "Spikey Balsa-Wood Heeled Boot",
-  image: "./css/image/beige-low-boot-studded",
+  image: "/images/beige-low-boot-studded.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -46,7 +46,7 @@ var beigeLowBootStudded = {
 
 var beigeOpenToeBuckleStuddedHeel = {
   name: "Impractical",
-  image: "./css/image/beige-open-toe-buckle-studded-heel.jpg",
+  image: "/images/beige-open-toe-buckle-studded-heel.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -69,7 +69,7 @@ var beigeOpenToeBuckleStuddedHeel = {
 
 var beigeOpenToeOpenHeelWedge = {
   name: "The Unlwalkable In",
-  image: "./css/image/beige-open-toe-open-heel-wedge.jpg",
+  image: "/images/beige-open-toe-open-heel-wedge.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -92,7 +92,7 @@ var beigeOpenToeOpenHeelWedge = {
 
 var beigeWedgeBoot = {
   name: "Tiptoe Sweat Boxes",
-  image: "./css/image/beige-wedge-boot.jpg",
+  image: "/images/beige-wedge-boot.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -115,7 +115,7 @@ var beigeWedgeBoot = {
 
 var blackFlatBuckle = {
   name: "A Normal Black Shoe",
-  image: "./css/image/black-flat-buckle.jpg",
+  image: "/images/black-flat-buckle.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -138,7 +138,7 @@ var blackFlatBuckle = {
 
 var blackHeelBootOpenToe = {
   name: "Walk Awkard In Black",
-  image: "./css/image/black-heeled-boot-open-toe.jpg",
+  image: "/images/black-heeled-boot-open-toe.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -161,7 +161,7 @@ var blackHeelBootOpenToe = {
 
 var blackHeeledLaces = {
   name: "Impossible Heel",
-  image: "./css/image/black-heeled-laces.jpg",
+  image: "/images/black-heeled-laces.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -184,7 +184,7 @@ var blackHeeledLaces = {
 
 var blackHeeledToe = {
   name: "A Long Way To Fall",
-  image: "./css/image/black-heeled-toe.jpg",
+  image: "/images/black-heeled-toe.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -207,7 +207,7 @@ var blackHeeledToe = {
 
 var blackOpenHeel = {
   name: "Not Too Bad, Standard Black Shoe",
-  image: "./css/image/black-open-heel.jpg",
+  image: "/images/black-open-heel.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -230,7 +230,7 @@ var blackOpenHeel = {
 
 var brownBuckleHeeledBoot = {
   name: "Needless Boot With Too Many Buckles",
-  image: "./css/image/brown-buckle-heeled-boot.jpg",
+  image: "/images/brown-buckle-heeled-boot.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -253,7 +253,7 @@ var brownBuckleHeeledBoot = {
 
 var brownHeeledStuddedOpenToe = {
   name: "The Ball Crusher",
-  image: "./css/image/brown-heeled-studded-open-toe.jpg",
+  image: "/images/brown-heeled-studded-open-toe.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -276,7 +276,7 @@ var brownHeeledStuddedOpenToe = {
 
 var brownOpenToeLaces = {
   name: "Fancy Gladiator",
-  image: "./css/image/brown-open-toe-laces.jpg",
+  image: "/images/brown-open-toe-laces.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -299,7 +299,7 @@ var brownOpenToeLaces = {
 
 var brownWedge = {
   name: "Hill Walk In Style",
-  image: "./css/image/brown-wedge.jpg",
+  image: "/images/brown-wedge.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -322,7 +322,7 @@ var brownWedge = {
 
 var redBootHeeledToe = {
   name: "Rocky Horror",
-  image: "./css/image/red-boot-heeled-toe.jpg",
+  image: "/images/red-boot-heeled-toe.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -345,7 +345,7 @@ var redBootHeeledToe = {
 
 var redHeeledLaces = {
   name: "Scarlet Pimpernel",
-  image: "./css/image/red-heeled-laces.jpg",
+  image: "/images/red-heeled-laces.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -368,7 +368,7 @@ var redHeeledLaces = {
 
 var redOpenHeelBuckle = {
   name: "Dorathy's Heel",
-  image: "./css/image/red-open-heel-buckle.jpg",
+  image: "/images/red-open-heel-buckle.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -391,7 +391,7 @@ var redOpenHeelBuckle = {
 
 var redWedgeBoot = {
   name: "The Eddie Izzard",
-  image: "./css/image/red-wedge-boot.jpg",
+  image: "/images/red-wedge-boot.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -414,7 +414,7 @@ var redWedgeBoot = {
 
 var redWedge = {
   name: "Too Busy",
-  image: "./css/image/red-wedge.jpg",
+  image: "/images/red-wedge.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -437,7 +437,7 @@ var redWedge = {
 
 var whiteFlatLaces = {
   name: "Plain Bowling Shoe",
-  image: "./css/image/white-flat-laces.jpg",
+  image: "/images/white-flat-laces.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -460,7 +460,7 @@ var whiteFlatLaces = {
 
 var whiteLacesOpenToeFlat = {
   name: "Missing A Few Bits",
-  image: "./css/image/white-laces-open-toe-flat.jpg",
+  image: "/images/white-laces-open-toe-flat.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -483,7 +483,7 @@ var whiteLacesOpenToeFlat = {
 
 var whiteLowLaced = {
   name: "The Dolly",
-  image: "./css/image/white-low-laced.jpg",
+  image: "/images/white-low-laced.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -506,7 +506,7 @@ var whiteLowLaced = {
 
 var whiteLowOpenHeeledBuckle = {
   name: "They Look Fine",
-  image: "./css/image/white-low-open-heeled-buckle.jpg",
+  image: "/images/white-low-open-heeled-buckle.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -529,7 +529,7 @@ var whiteLowOpenHeeledBuckle = {
 
 var whiteWedgeStudded = {
   name: "Nike Gone Mad",
-  image: "./css/image/white-wedge-studded.jpg",
+  image: "/images/white-wedge-studded.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -550,8 +550,6 @@ var whiteWedgeStudded = {
   openHeel: false
 }
 
-// var tinyShoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded ];
+var playerShoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded ];
 
-var testShoes = [ beigeHeeledBoot, beigeLowBootStudded ];
-
-module.exports = testShoes;
+module.exports = playerShoes;

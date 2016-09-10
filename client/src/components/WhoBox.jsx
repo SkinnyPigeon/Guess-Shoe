@@ -12,7 +12,6 @@ var WhoBox = React.createClass({
   render: function() {
     return(
       <div>
-        <h1>App Is Working</h1>
         <WhoViewer shoes={ this.state.shoes } />
       </div>
     )
