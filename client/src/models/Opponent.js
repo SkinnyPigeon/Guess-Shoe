@@ -29,7 +29,6 @@ Opponent.prototype = {
   },
 
   makeGuess: function() {
-    console.log( this.playerShoes );
     this.shuffle();
     var result = _.take( this.questions );
     this.questions.splice( 0, 1 );

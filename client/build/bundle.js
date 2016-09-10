@@ -37710,12 +37710,10 @@
 	    return { game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: this.props.game.playerShoe, computer: this.props.computer, question: null };
 	  },
 	
-	  componentWillMount: function componentWillMount() {
-	    this.opponentHandler();
-	  },
-	
 	  componentDidMount: function componentDidMount() {
-	    this.showPlayer();
+	    this.opponentHandler();
+	
+	    this.handleTurnDisplay();
 	  },
 	
 	  pickPlayerCard: function pickPlayerCard(event) {
@@ -37733,7 +37731,8 @@
 	  },
 	
 	  onColourChange: function onColourChange(event) {
-	    this.props.game.endTurn();
+	    // this.props.game.endTurn();
+	    this.handleTurnDisplay();
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
 	      var playerLogic = new Logic(array[i]);
@@ -37749,6 +37748,7 @@
 	
 	    if (this.props.game.currentPlayer === 0) {
 	      this.showPlayer();
+	      this.props.game.endTurn();
 	    }
 	
 	    if (this.props.game.currentPlayer === 1) {
@@ -37757,7 +37757,6 @@
 	  },
 	
 	  showPlayer: function showPlayer() {
-	    var player = document.getElementsByClassName('questions');
 	    var colourQuestion = document.getElementById("colour-question");
 	    var styleQuestion = document.getElementById('style-question');
 	    var decorationQuestion = document.getElementById('decoration-question');
@@ -37778,7 +37777,7 @@
 	  },
 	
 	  hidePlayer: function hidePlayer() {
-	    var colourQuestion = document.getElementById('colour-question');
+	    var colourQuestion = document.getElementById("colour-question");
 	    var styleQuestion = document.getElementById('style-question');
 	    var decorationQuestion = document.getElementById('decoration-question');
 	
@@ -37798,7 +37797,9 @@
 	  },
 	
 	  onStyleChange: function onStyleChange(event) {
-	    this.props.game.endTurn();
+	    // this.props.game.endTurn();
+	    this.handleTurnDisplay();
+	
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
 	      var playerLogic = new Logic(array[i]);
@@ -37814,6 +37815,7 @@
 	    var array = this.props.game.playerArray[2];
 	    var computer = this.props.computer;
 	    var question = computer.makeGuess();
+	    console.log(array);
 	    console.log(question[0][0].toString());
 	    for (var i = 0; i < array.length; i++) {
 	      var opponentLogic = new Logic(array[i]);
@@ -37832,6 +37834,7 @@
 	      this.removeWrongShoes(array[i], i);
 	    }
 	    this.giveQuestion(question[0][1]);
+	    this.showPlayer();
 	  },
 	
 	  giveQuestion: function giveQuestion(question) {
@@ -37859,7 +37862,8 @@
 	  },
 	
 	  onDecorationChange: function onDecorationChange(event) {
-	    this.props.game.endTurn();
+	    this.handleTurnDisplay();
+	
 	    console.log(event.target.value);
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
@@ -38228,7 +38232,6 @@
 	  },
 	
 	  makeGuess: function makeGuess() {
-	    console.log(this.playerShoes);
 	    this.shuffle();
 	    var result = _.take(this.questions);
 	    this.questions.splice(0, 1);
