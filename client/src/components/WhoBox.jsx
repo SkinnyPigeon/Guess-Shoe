@@ -99,7 +99,7 @@ var WhoBox = React.createClass({
   },
 
   opponentHandler: function() {
-    var array = this.props.game.playerArray[0];
+    var array = this.props.game.playerArray[2];
     var computer = this.props.computer;
     var question = computer.makeGuess();
     console.log( question[0][0].toString() );
@@ -107,8 +107,16 @@ var WhoBox = React.createClass({
       var opponentLogic = new Logic( array[i] );
       var playerLogic = new Logic( this.state.playerShoe );
       var stringQuestion = question[0][0].toString()
-      opponentLogic.handleDecorationGuess( stringQuestion );
+
+      opponentLogic.handleColourGuess( stringQuestion );
       playerLogic.handleColourGuess( stringQuestion );
+
+      opponentLogic.handleDecorationGuess( stringQuestion );
+      playerLogic.handleDecorationGuess( stringQuestion );
+
+      opponentLogic.handleStyleGuess( stringQuestion );
+      playerLogic.handleStyleGuess( stringQuestion );
+
       this.removeWrongShoes( array[i], i );
     }
     this.giveQuestion( question[0][1] )

@@ -20893,8 +20893,8 @@
 	
 	var _ = __webpack_require__(162);
 	
-	var Game = function Game(playerShoes, opponentShoes) {
-	  this.playerArray = [playerShoes, opponentShoes];
+	var Game = function Game(playerShoes, opponentShoes, backupShoes) {
+	  this.playerArray = [playerShoes, opponentShoes, backupShoes];
 	  this.currentPlayer = 0;
 	  this.opponentShoe = null;
 	  this.playerShoe = null;
@@ -37797,7 +37797,7 @@
 	  },
 	
 	  opponentHandler: function opponentHandler() {
-	    var array = this.props.game.playerArray[0];
+	    var array = this.props.game.playerArray[2];
 	    var computer = this.props.computer;
 	    var question = computer.makeGuess();
 	    console.log(question[0][0].toString());
@@ -37805,8 +37805,16 @@
 	      var opponentLogic = new Logic(array[i]);
 	      var playerLogic = new Logic(this.state.playerShoe);
 	      var stringQuestion = question[0][0].toString();
-	      opponentLogic.handleDecorationGuess(stringQuestion);
+	
+	      opponentLogic.handleColourGuess(stringQuestion);
 	      playerLogic.handleColourGuess(stringQuestion);
+	
+	      opponentLogic.handleDecorationGuess(stringQuestion);
+	      playerLogic.handleDecorationGuess(stringQuestion);
+	
+	      opponentLogic.handleStyleGuess(stringQuestion);
+	      playerLogic.handleStyleGuess(stringQuestion);
+	
 	      this.removeWrongShoes(array[i], i);
 	    }
 	    this.giveQuestion(question[0][1]);

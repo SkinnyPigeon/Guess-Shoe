@@ -1,7 +1,7 @@
 var _ = require( 'lodash' );
 
-var Game = function( playerShoes, opponentShoes ) {
-  this.playerArray = [ playerShoes, opponentShoes ];
+var Game = function( playerShoes, opponentShoes, backupShoes ) {
+  this.playerArray = [ playerShoes, opponentShoes, backupShoes ];
   this.currentPlayer = 0;
   this.opponentShoe = null;
   this.playerShoe = null;
