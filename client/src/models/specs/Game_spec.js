@@ -25,4 +25,10 @@ describe( 'The Game: ', function() {
     assert.equal( false, game.playerArray[1][0].isYourCard );
   });
 
+  it( 'Should be able to end the turn', function() {
+    game.playerPickCard( 0 );
+    game.endTurn();
+    assert.equal( false, game.playerArray[0][0].isYourCard );
+  })
+
 });
