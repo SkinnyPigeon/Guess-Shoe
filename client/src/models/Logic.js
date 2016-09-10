@@ -6,6 +6,11 @@ var Logic = function( shoe ) {
 
 Logic.prototype = {
 
+  handleColourGuess: function( colour ) {
+    if( this.shoe.beige === true && colour === "BEIGE" ) {
+      return true;
+    }
+  },
 
 }
 

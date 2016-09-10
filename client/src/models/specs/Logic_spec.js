@@ -9,4 +9,10 @@ describe( 'The Logic: ', function() {
     assert.equal( "Puffy Ugly Beige Shoe", logic.shoe.name );
   });
 
+  it( 'Should be able to tell a shoe is beige', function() {
+    var logic = new Logic( shoes[0] );
+    var answer = logic.handleColourGuess( 'BEIGE' );
+    assert.equal( true, answer );
+  })
+
 });
