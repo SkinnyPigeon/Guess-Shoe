@@ -11,18 +11,33 @@ li {
   padding: 0.5%;
 }
 
-img {
+img.active {
   max-width: 10%;
   max-height: 10%;
   margin: 0.5%;
   border: 1px solid black;
 }
 
-img:hover {
+img:hover.active {
   box-shadow: 2px 2px 1px grey;
 }
 
 p {
   font-size: 0.05em;
 }
+
+img.eliminated {
+  max-width: 10%;
+  max-height: 10%;
+  margin: 0.5%;
+  border: 1px solid black;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.eliminated {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 

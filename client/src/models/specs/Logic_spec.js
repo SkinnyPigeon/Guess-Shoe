@@ -102,7 +102,7 @@ describe( 'The Logic: ', function() {
   it( 'Should set a card to be eliminated once it has been picked', function() {
     var logic = new Logic( shoes[0] );
     logic.handleColourGuess( 'BEIGE' );
-    var answer = shoes[0].isEliminated;
+    var answer = shoes[0].isCorrect;
     assert.equal( true, answer );
   })
 

@@ -25,6 +25,10 @@ Game.prototype = {
       this.currentPlayer = 0;
     }
   },
+
+  handleElimination: function( shoeIndex ) {
+    this.playerArray[ this.currentPlayer ][ shoeIndex ].isEliminated = true;
+  }
 }
 
 module.exports = Game;

@@ -20911,6 +20911,10 @@
 	    if (this.currentPlayer === 1) {
 	      this.currentPlayer = 0;
 	    }
+	  },
+	
+	  handleElimination: function handleElimination(shoeIndex) {
+	    this.playerArray[this.currentPlayer][shoeIndex].isEliminated = true;
 	  }
 	};
 	
@@ -37680,6 +37684,8 @@
 	
 	var React = __webpack_require__(1);
 	var WhoViewer = __webpack_require__(165);
+	var WhoQuestioner = __webpack_require__(166);
+	var Logic = __webpack_require__(167);
 	
 	var WhoBox = React.createClass({
 	  displayName: 'WhoBox',
@@ -37690,17 +37696,33 @@
 	  },
 	
 	  pickPlayerCard: function pickPlayerCard(event) {
-	    console.log(event.target.id);
 	    var index = event.target.id;
-	    console.log(index);
 	    this.props.game.playerPickCard(index);
+	  },
+	
+	  eliminateCard: function eliminateCard(event) {
+	    var index = event.target.id;
+	    this.props.game.handleElimination(index);
+	    event.target.className = "eliminated";
+	  },
+	
+	  onColourChange: function onColourChange(event) {
+	    for (var i = 0; i < this.props.game.playerArray[1].length; i++) {
+	      var logic = new Logic(this.props.game.playerArray[1][i]);
+	      logic.handleColourGuess(event.target.value);
+	      if (this.props.game.playerArray[1][i].isEliminated === true) {
+	        this.props.game.playerArray[0][i].className = "eliminated";
+	        console.log(this.props.game.playerArray[0][i].className);
+	      }
+	    }
 	  },
 	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard })
+	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard }),
+	      React.createElement(WhoQuestioner, { onColourChange: this.onColourChange })
 	    );
 	  }
 	
@@ -37712,33 +37734,167 @@
 /* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
 	
 	var WhoViewer = function WhoViewer(props) {
 	
-	  console.log(props);
 	  if (!props.shoes) {
 	    return React.createElement(
-	      'h1',
+	      "h1",
 	      null,
-	      'I am the Images'
+	      "I am the Images"
 	    );
 	  }
 	
 	  var imageNodes = props.shoes.map(function (shoe, index) {
-	    return React.createElement('img', { src: shoe.image, index: index, key: index, value: index, id: index, onDoubleClick: props.onDblClick });
+	    return React.createElement("img", { src: shoe.image, index: index, key: index, value: index, id: index, onDoubleClick: props.onDblClick, onClick: props.onClick, className: "active" });
 	  });
 	
 	  return React.createElement(
-	    'ul',
+	    "ul",
 	    null,
 	    imageNodes
 	  );
 	};
 	
 	module.exports = WhoViewer;
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var WhoQuestioner = function WhoQuestioner(props) {
+	
+	  return React.createElement(
+	    'div',
+	    { id: 'questions' },
+	    React.createElement(
+	      'select',
+	      { id: 'colour-question', onChange: props.onColourChange },
+	      React.createElement(
+	        'option',
+	        { value: 'RED' },
+	        'Are They Red?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BLACK' },
+	        'Are They Black?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BEIGE' },
+	        'Are They Beige?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'WHITE' },
+	        'Are They White?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BROWN' },
+	        'Are They Brown?'
+	      )
+	    )
+	  );
+	};
+	
+	module.exports = WhoQuestioner;
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var shoes = __webpack_require__(159);
+	
+	var Logic = function Logic(shoe) {
+	  this.shoe = shoe;
+	};
+	
+	Logic.prototype = {
+	
+	  handleColourGuess: function handleColourGuess(colour) {
+	    if (this.shoe.beige && colour === "BEIGE") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.black && colour === "BLACK") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.red && colour === "RED") {
+	      this.shoe.isCorrect = true;
+	
+	      return true;
+	    }
+	    if (this.shoe.white && colour === "WHITE") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.brown && colour === "BROWN") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	  },
+	
+	  handleStyleGuess: function handleStyleGuess(style) {
+	    if (this.shoe.flat && style === "FLAT") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.bigHeel && style === "BIG HEEL") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.smallHeel && style === "SMALL HEEL") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.wedge && style === "WEDGE") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.boot && style === "BOOT") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	  },
+	
+	  handleDecorationGuess: function handleDecorationGuess(decoration) {
+	    if (this.shoe.buckle && decoration === "BUCKLE") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.laces && decoration === "LACES") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.studded && decoration === "STUDDED") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.openToe && decoration === "OPEN TOES") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.openHeel && decoration === "OPEN HEELS") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	  }
+	
+	};
+	
+	module.exports = Logic;
 
 /***/ }
 /******/ ]);
