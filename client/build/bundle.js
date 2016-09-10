@@ -37733,28 +37733,43 @@
 	  },
 	
 	  handleTurnDisplay: function handleTurnDisplay() {
-	    var colourQuestion = document.getElementById('colour-question');
-	    var styleQuestion = document.getElementById('style-question');
-	    var colourQuestion = document.getElementById('colour-question');
-	    // var computerQuesitons = document.getElementsByClassName( 'computer-questions' );
-	    if (this.props.game.currentPlayer === 0) {
-	      colourQuestion.style.opacity = '1';
-	      colourQuestion.style.pointerEvents = 'auto';
 	
-	      styleQuestion.style.opacity = '1';
-	      styleQuestion.style.pointerEvents = 'auto';
-	      // computerQuesitons.style.display = 'none';
+	    if (this.props.game.currentPlayer === 0) {
+	      this.showPlayer();
 	    }
 	
 	    if (this.props.game.currentPlayer === 1) {
-	      colourQuestion.style.pointerEvents = 'none';
-	      colourQuestion.style.opacity = '0';
-	
-	      styleQuestion.style.pointerEvents = 'none';
-	      styleQuestion.style.opacity = '0';
-	
-	      // computerQuesitons.style.display = 'block';
+	      this.hidePlayer();
 	    }
+	  },
+	
+	  showPlayer: function showPlayer() {
+	    var colourQuestion = document.getElementById('colour-question');
+	    var styleQuestion = document.getElementById('style-question');
+	    var colourQuestion = document.getElementById('colour-question');
+	
+	    // var computerQuesitons = document.getElementsByClassName( 'computer-questions' );
+	
+	    colourQuestion.style.opacity = '1';
+	    colourQuestion.style.pointerEvents = 'auto';
+	
+	    styleQuestion.style.opacity = '1';
+	    styleQuestion.style.pointerEvents = 'auto';
+	
+	    // computerQuestions.style.opacity = '0';
+	    // computerQuestions.style.pointerEvents = 'none';
+	  },
+	
+	  hidePlayer: function hidePlayer() {
+	    var colourQuestion = document.getElementById('colour-question');
+	    var styleQuestion = document.getElementById('style-question');
+	    var colourQuestion = document.getElementById('colour-question');
+	
+	    colourQuestion.style.pointerEvents = 'none';
+	    colourQuestion.style.opacity = '0';
+	
+	    styleQuestion.style.pointerEvents = 'none';
+	    styleQuestion.style.opacity = '0';
 	  },
 	
 	  onStyleChange: function onStyleChange(event) {
