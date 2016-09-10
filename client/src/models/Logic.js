@@ -22,10 +22,11 @@ Logic.prototype = {
     if( this.shoe.brown === true && colour === "BROWN" ) {
       return true;
     }
-
-
-
   },
+
+  handleStyleGuess: function( style ) {
+    
+  }
 
 }
 
