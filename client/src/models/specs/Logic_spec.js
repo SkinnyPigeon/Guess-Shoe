@@ -99,6 +99,13 @@ describe( 'The Logic: ', function() {
     assert.equal( true, answer );
   });
 
+  it( 'Should set a card to be eliminated once it has been picked', function() {
+    var logic = new Logic( shoes[0] );
+    logic.handleColourGuess( 'BEIGE' );
+    var answer = shoes[0].isEliminated;
+    assert.equal( true, answer );
+  })
+
 });
 
 
