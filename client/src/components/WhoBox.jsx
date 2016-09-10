@@ -22,8 +22,6 @@ var WhoBox = React.createClass({
     var hide = document.getElementById( 'who-pick' );
     var show = document.getElementById( 'who-view' );
     hide.className = 'hide-pick';
-    console.log( hide );
-    console.log( this.props.game.playerShoe );
   },
 
   eliminateCard: function( event ) {
@@ -58,10 +56,11 @@ var WhoBox = React.createClass({
 
   showPlayer: function() {
     var colourQuestion = document.getElementById( 'colour-question' );
+    console.log( colourQuestion );
     var styleQuestion = document.getElementById( 'style-question' );
-    var colourQuestion = document.getElementById( 'colour-question' );
+    var decorationQuestion = document.getElementById( 'decoration-question' );
 
-    // var computerQuesitons = document.getElementsByClassName( 'computer-questions' );
+    var computerQuesitons = document.getElementById( 'computer-questions' );
 
     colourQuestion.style.opacity = '1';
     colourQuestion.style.pointerEvents = 'auto';
@@ -69,20 +68,32 @@ var WhoBox = React.createClass({
     styleQuestion.style.opacity = '1';
     styleQuestion.style.pointerEvents = 'auto';
 
-      // computerQuestions.style.opacity = '0';
-      // computerQuestions.style.pointerEvents = 'none';
+    decorationQuestion.style.opacity = '1';
+    decorationQuestion.style.pointerEvents = 'auto';
+
+    computerQuestions.style.opacity = '0';
+    computerQuestions.style.pointerEvents = 'none';
   },
 
   hidePlayer: function() {
     var colourQuestion = document.getElementById( 'colour-question' );
     var styleQuestion = document.getElementById( 'style-question' );
-    var colourQuestion = document.getElementById( 'colour-question' );
+    var decorationQuestion = document.getElementById( 'decorationQuestion-question' );
+
+    var computerQuesitons = document.getElementById( 'computer-questions' );
+
 
     colourQuestion.style.pointerEvents = 'none';
     colourQuestion.style.opacity = '0';
 
     styleQuestion.style.pointerEvents = 'none';
     styleQuestion.style.opacity = '0';
+
+    decorationQuestion.style.opacity = '0';
+    decorationQuestion.style.pointerEvents = 'none';
+
+    computerQuestions.style.opacity = '1';
+    computerQuestions.style.pointerEvents = 'auto';
   },
 
   onStyleChange: function( event ) {
@@ -120,6 +131,8 @@ var WhoBox = React.createClass({
       this.removeWrongShoes( array[i], i );
     }
     this.giveQuestion( question[0][1] )
+    // this.handleTurnDisplay();
+    // this.showPlayer();
   },
 
   giveQuestion: function( question ) {
@@ -144,8 +157,7 @@ var WhoBox = React.createClass({
     if( shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true ) {
       display.className = "eliminated"
     }
-    // this.handleTurnDisplay();
-    // this.opponentHandler();
+    this.handleTurnDisplay();
   },
 
   onDecorationChange: function( event ) {

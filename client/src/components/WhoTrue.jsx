@@ -5,7 +5,7 @@ var WhoTrue = function( props ) {
   console.log( props );
 
   return(
-    <div>
+    <div id="computer-questions">
       <p>{ props.question }</p>
       <ul id="buttons">
         <button onClick={ props.onClick } >Yes</button>
