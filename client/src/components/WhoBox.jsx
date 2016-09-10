@@ -2,13 +2,18 @@ var React = require( 'react' );
 var WhoPick = require( './WhoPick' );
 var WhoViewer = require( './WhoViewer' );
 var WhoClues = require( './WhoClues' );
+var WhoTrue = require( './WhoTrue' );
 var Logic = require( '../models/Logic' );
 
 
 var WhoBox = React.createClass({
 
   getInitialState: function() {
-    return{ game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: this.props.game.playerShoe, computer: this.props.computer }
+    return{ game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: this.props.game.playerShoe, computer: this.props.computer, question: null }
+  },
+
+  componentWillMount: function() {
+    this.opponentHandler();
   },
 
   pickPlayerCard: function( event ) {
@@ -98,13 +103,17 @@ var WhoBox = React.createClass({
     var array = this.props.game.playerArray[0];
     var computer = this.props.computer;
     var question = computer.makeGuess();
-    console.log( question[0][0] );
     for( var i = 0; i < array.length; i++ ) {
       var opponentLogic = new Logic( array[i] );
       var playerLogic = new Logic( this.state.playerShoe );
       opponentLogic.handleDecorationGuess( question[0][0] )
       playerLogic.handleDecorationGuess( question[0][0] )
     }
+    this.giveQuestion( question[0][1] )
+  },
+
+  giveQuestion: function( question ) {
+    this.setState({ question: question })
   },
 
   onDecorationChange: function( event ) {
@@ -130,12 +139,14 @@ var WhoBox = React.createClass({
       display.className = "eliminated"
     }
     this.handleTurnDisplay();
+    this.opponentHandler();
   },
 
   render: function() {
     return(
       <div>
         <WhoViewer shoes={ this.state.shoes } onClick={ this.eliminateCard } />
+        <WhoTrue question={ this.state.question } />
         <WhoClues onColourChange={ this.onColourChange } onStyleChange={ this.onStyleChange } onDecorationChange={ this.onDecorationChange } />
       </div>
     )

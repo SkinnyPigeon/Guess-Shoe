@@ -52,7 +52,7 @@
 	var opponentShoes = __webpack_require__(160);
 	var Game = __webpack_require__(161);
 	var WhoBox = __webpack_require__(164);
-	var Opponent = __webpack_require__(169);
+	var Opponent = __webpack_require__(170);
 	
 	window.onload = function () {
 	
@@ -37698,14 +37698,19 @@
 	var WhoPick = __webpack_require__(165);
 	var WhoViewer = __webpack_require__(166);
 	var WhoClues = __webpack_require__(167);
-	var Logic = __webpack_require__(168);
+	var WhoTrue = __webpack_require__(168);
+	var Logic = __webpack_require__(169);
 	
 	var WhoBox = React.createClass({
 	  displayName: 'WhoBox',
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: this.props.game.playerShoe, computer: this.props.computer };
+	    return { game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: this.props.game.playerShoe, computer: this.props.computer, question: null };
+	  },
+	
+	  componentWillMount: function componentWillMount() {
+	    this.opponentHandler();
 	  },
 	
 	  pickPlayerCard: function pickPlayerCard(event) {
@@ -37795,13 +37800,17 @@
 	    var array = this.props.game.playerArray[0];
 	    var computer = this.props.computer;
 	    var question = computer.makeGuess();
-	    console.log(question[0][0]);
 	    for (var i = 0; i < array.length; i++) {
 	      var opponentLogic = new Logic(array[i]);
 	      var playerLogic = new Logic(this.state.playerShoe);
 	      opponentLogic.handleDecorationGuess(question[0][0]);
 	      playerLogic.handleDecorationGuess(question[0][0]);
 	    }
+	    this.giveQuestion(question[0][1]);
+	  },
+	
+	  giveQuestion: function giveQuestion(question) {
+	    this.setState({ question: question });
 	  },
 	
 	  onDecorationChange: function onDecorationChange(event) {
@@ -37827,6 +37836,7 @@
 	      display.className = "eliminated";
 	    }
 	    this.handleTurnDisplay();
+	    this.opponentHandler();
 	  },
 	
 	  render: function render() {
@@ -37834,6 +37844,7 @@
 	      'div',
 	      null,
 	      React.createElement(WhoViewer, { shoes: this.state.shoes, onClick: this.eliminateCard }),
+	      React.createElement(WhoTrue, { question: this.state.question }),
 	      React.createElement(WhoClues, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange })
 	    );
 	  }
@@ -38030,6 +38041,37 @@
 
 	"use strict";
 	
+	var React = __webpack_require__(1);
+	
+	var WhoTrue = function WhoTrue(props) {
+	
+	  console.log(props);
+	
+	  return React.createElement(
+	    "div",
+	    null,
+	    React.createElement(
+	      "h1",
+	      null,
+	      props.question
+	    ),
+	    React.createElement(
+	      "ul",
+	      null,
+	      React.createElement("button", { value: "Yes", text: "Yes" }),
+	      React.createElement("button", { value: "No" })
+	    )
+	  );
+	};
+	
+	module.exports = WhoTrue;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
 	var shoes = __webpack_require__(159);
 	
 	var Logic = function Logic(shoe) {
@@ -38123,12 +38165,12 @@
 	module.exports = Logic;
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Logic = __webpack_require__(168);
+	var Logic = __webpack_require__(169);
 	var lodash = __webpack_require__(162);
 	
 	var Opponent = function Opponent(playerShoes) {
@@ -38140,11 +38182,14 @@
 	Opponent.prototype = {
 	
 	  shuffle: function shuffle() {
-	    _.shuffle(this.questions);
+	    console.log(this.questions);
+	    this.questions = _.shuffle(this.questions);
+	    console.log(this.questions);
 	  },
 	
 	  makeGuess: function makeGuess() {
 	    this.shuffle();
+	    console.log(this.questions[0]);
 	    var result = _.take(this.questions);
 	    return result;
 	  }

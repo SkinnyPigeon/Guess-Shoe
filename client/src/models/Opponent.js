@@ -24,11 +24,15 @@ var Opponent = function( playerShoes ) {
 Opponent.prototype = {
 
   shuffle: function() {
-    _.shuffle( this.questions );
+    console.log( this.questions );
+    this.questions = _.shuffle( this.questions );
+    console.log( this.questions );
+
   },
 
   makeGuess: function() {
     this.shuffle();
+    console.log( this.questions[0] );
     var result = _.take( this.questions );
     return result;
   }
