@@ -37714,6 +37714,10 @@
 	    this.opponentHandler();
 	  },
 	
+	  componentDidMount: function componentDidMount() {
+	    this.showPlayer();
+	  },
+	
 	  pickPlayerCard: function pickPlayerCard(event) {
 	    var index = event.target.id;
 	    this.props.game.playerPickCard(index);
@@ -37753,12 +37757,12 @@
 	  },
 	
 	  showPlayer: function showPlayer() {
-	    var colourQuestion = document.getElementById('colour-question');
-	    console.log(colourQuestion);
+	    var player = document.getElementsByClassName('questions');
+	    var colourQuestion = document.getElementById("colour-question");
 	    var styleQuestion = document.getElementById('style-question');
 	    var decorationQuestion = document.getElementById('decoration-question');
 	
-	    var computerQuesitons = document.getElementById('computer-questions');
+	    var computerQuestions = document.getElementById('computer-questions');
 	
 	    colourQuestion.style.opacity = '1';
 	    colourQuestion.style.pointerEvents = 'auto';
@@ -37776,9 +37780,9 @@
 	  hidePlayer: function hidePlayer() {
 	    var colourQuestion = document.getElementById('colour-question');
 	    var styleQuestion = document.getElementById('style-question');
-	    var decorationQuestion = document.getElementById('decorationQuestion-question');
+	    var decorationQuestion = document.getElementById('decoration-question');
 	
-	    var computerQuesitons = document.getElementById('computer-questions');
+	    var computerQuestions = document.getElementById('computer-questions');
 	
 	    colourQuestion.style.pointerEvents = 'none';
 	    colourQuestion.style.opacity = '0';
@@ -37828,8 +37832,6 @@
 	      this.removeWrongShoes(array[i], i);
 	    }
 	    this.giveQuestion(question[0][1]);
-	    // this.handleTurnDisplay();
-	    // this.showPlayer();
 	  },
 	
 	  giveQuestion: function giveQuestion(question) {
@@ -37837,7 +37839,6 @@
 	  },
 	
 	  removeWrongShoes: function removeWrongShoes(shoe, index) {
-	    console.log(this.state.game.playerArray[2]);
 	    if (shoe.isCorrect === true && this.state.playerShoe.isCorrect != true) {
 	      this.state.game.playerArray[2].splice(index, 1);
 	    }

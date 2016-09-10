@@ -16,6 +16,10 @@ var WhoBox = React.createClass({
     this.opponentHandler();
   },
 
+  componentDidMount: function() {
+    this.showPlayer();
+  },
+
   pickPlayerCard: function( event ) {
     var index = event.target.id;
     this.props.game.playerPickCard( index );
@@ -55,12 +59,12 @@ var WhoBox = React.createClass({
   },
 
   showPlayer: function() {
-    var colourQuestion = document.getElementById( 'colour-question' );
-    console.log( colourQuestion );
+    var player = document.getElementsByClassName( 'questions' );
+    var colourQuestion = document.getElementById( "colour-question" );
     var styleQuestion = document.getElementById( 'style-question' );
     var decorationQuestion = document.getElementById( 'decoration-question' );
 
-    var computerQuesitons = document.getElementById( 'computer-questions' );
+    var computerQuestions = document.getElementById( 'computer-questions' );
 
     colourQuestion.style.opacity = '1';
     colourQuestion.style.pointerEvents = 'auto';
@@ -78,9 +82,9 @@ var WhoBox = React.createClass({
   hidePlayer: function() {
     var colourQuestion = document.getElementById( 'colour-question' );
     var styleQuestion = document.getElementById( 'style-question' );
-    var decorationQuestion = document.getElementById( 'decorationQuestion-question' );
+    var decorationQuestion = document.getElementById( 'decoration-question' );
 
-    var computerQuesitons = document.getElementById( 'computer-questions' );
+    var computerQuestions = document.getElementById( 'computer-questions' );
 
 
     colourQuestion.style.pointerEvents = 'none';
@@ -131,8 +135,6 @@ var WhoBox = React.createClass({
       this.removeWrongShoes( array[i], i );
     }
     this.giveQuestion( question[0][1] )
-    // this.handleTurnDisplay();
-    // this.showPlayer();
   },
 
   giveQuestion: function( question ) {
@@ -140,7 +142,6 @@ var WhoBox = React.createClass({
   },
 
   removeWrongShoes: function( shoe, index ) {
-    console.log( this.state.game.playerArray[2] );
     if( shoe.isCorrect === true && this.state.playerShoe.isCorrect != true ) {
       this.state.game.playerArray[2].splice( index, 1 );
     }

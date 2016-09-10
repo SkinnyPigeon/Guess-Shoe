@@ -1,5 +1,6 @@
 body{
   font-family: Verdana;
+  text-align: center;
 }
 
 ul {
@@ -100,3 +101,5 @@ p {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+
+
