@@ -37687,8 +37687,11 @@
 	
 	var React = __webpack_require__(1);
 	var WhoViewer = __webpack_require__(165);
-	var WhoQuestioner = __webpack_require__(166);
-	var Logic = __webpack_require__(167);
+	var WhoColour = __webpack_require__(166);
+	var WhoStyle = __webpack_require__(167);
+	var WhoStyle = __webpack_require__(167);
+	var WhoDecoration = __webpack_require__(168);
+	var Logic = __webpack_require__(169);
 	
 	var WhoBox = React.createClass({
 	  displayName: 'WhoBox',
@@ -37727,20 +37730,21 @@
 	      var playerLogic = new Logic(array[i]);
 	      var opponentLogic = new Logic(this.state.opponentShoe);
 	      var value = event.target.value;
-	      playerLogic.handleColourGuess(value);
-	      opponentLogic.handleColourGuess(value);
+	      playerLogic.handleStyleGuess(value);
+	      opponentLogic.handleStyleGuess(value);
 	      this.hideWrongShoes(array[i], i, value);
 	    }
 	  },
 	
 	  onDecorationChange: function onDecorationChange(event) {
+	    console.log(event.target.value);
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
 	      var playerLogic = new Logic(array[i]);
 	      var opponentLogic = new Logic(this.state.opponentShoe);
 	      var value = event.target.value;
-	      playerLogic.handleColourGuess(value);
-	      opponentLogic.handleColourGuess(value);
+	      playerLogic.handleDecorationGuess(value);
+	      opponentLogic.handleDecorationGuess(value);
 	      this.hideWrongShoes(array[i], i, value);
 	    }
 	  },
@@ -37757,7 +37761,9 @@
 	      'div',
 	      null,
 	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard }),
-	      React.createElement(WhoQuestioner, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange })
+	      React.createElement(WhoColour, { onColourChange: this.onColourChange }),
+	      React.createElement(WhoStyle, { onStyleChange: this.onStyleChange }),
+	      React.createElement(WhoDecoration, { onDecorationChange: this.onDecorationChange })
 	    );
 	  }
 	
@@ -37804,11 +37810,11 @@
 	
 	var React = __webpack_require__(1);
 	
-	var WhoQuestioner = function WhoQuestioner(props) {
+	var WhoColour = function WhoColour(props) {
 	
 	  return React.createElement(
 	    'div',
-	    { id: 'questions' },
+	    { className: 'questions' },
 	    React.createElement(
 	      'select',
 	      { id: 'colour-question', onChange: props.onColourChange },
@@ -37842,7 +37848,25 @@
 	        { value: 'BROWN' },
 	        'Are They Brown?'
 	      )
-	    ),
+	    )
+	  );
+	};
+	
+	module.exports = WhoColour;
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var WhoStyle = function WhoStyle(props) {
+	
+	  return React.createElement(
+	    'div',
+	    { className: 'questions' },
 	    React.createElement(
 	      'select',
 	      { id: 'style-question', onChange: props.onStyleChange },
@@ -37876,10 +37900,29 @@
 	        { value: 'BROWN' },
 	        'Are They Boots?'
 	      )
-	    ),
+	    )
+	  );
+	};
+	
+	module.exports = WhoStyle;
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var WhoDecoration = function WhoDecoration(props) {
+	
+	  console.log(props);
+	  return React.createElement(
+	    'div',
+	    { className: 'questions' },
 	    React.createElement(
 	      'select',
-	      { id: 'decoration-question', onChange: props.onStyleChange },
+	      { id: 'decoration-question', onChange: props.onDecorationChange },
 	      React.createElement(
 	        'option',
 	        { value: 'DEFAULT' },
@@ -37914,10 +37957,10 @@
 	  );
 	};
 	
-	module.exports = WhoQuestioner;
+	module.exports = WhoDecoration;
 
 /***/ },
-/* 167 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
