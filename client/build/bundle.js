@@ -37690,10 +37690,10 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var WhoPick = __webpack_require__(171);
-	var WhoViewer = __webpack_require__(165);
-	var WhoClues = __webpack_require__(170);
-	var Logic = __webpack_require__(169);
+	var WhoPick = __webpack_require__(165);
+	var WhoViewer = __webpack_require__(166);
+	var WhoClues = __webpack_require__(167);
+	var Logic = __webpack_require__(168);
 	
 	var WhoBox = React.createClass({
 	  displayName: 'WhoBox',
@@ -37831,6 +37831,37 @@
 	
 	var React = __webpack_require__(1);
 	
+	var WhoPick = function WhoPick(props) {
+	
+	  if (!props.shoes) {
+	    return React.createElement(
+	      "h1",
+	      null,
+	      "I am the Images"
+	    );
+	  }
+	
+	  var imageNodes = props.shoes.map(function (shoe, index) {
+	    return React.createElement("img", { src: shoe.image, index: index, key: index, value: index, id: index, onClick: props.onClick, className: "who-pick" });
+	  });
+	
+	  return React.createElement(
+	    "ul",
+	    { id: "who-pick" },
+	    imageNodes
+	  );
+	};
+	
+	module.exports = WhoPick;
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
 	var WhoViewer = function WhoViewer(props) {
 	
 	  if (!props.shoes) {
@@ -37855,108 +37886,7 @@
 	module.exports = WhoViewer;
 
 /***/ },
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var shoes = __webpack_require__(159);
-	
-	var Logic = function Logic(shoe) {
-	  this.shoe = shoe;
-	  this.shoe.isCorrect = false;
-	};
-	
-	Logic.prototype = {
-	
-	  handleColourGuess: function handleColourGuess(colour) {
-	    if (colour === "DEFAULT") {
-	      return;
-	    }
-	    if (this.shoe.beige && colour === "BEIGE") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.black && colour === "BLACK") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.red && colour === "RED") {
-	      this.shoe.isCorrect = true;
-	
-	      return true;
-	    }
-	    if (this.shoe.white && colour === "WHITE") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.brown && colour === "BROWN") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	  },
-	
-	  handleStyleGuess: function handleStyleGuess(style) {
-	    if (style === "DEFAULT") {
-	      return;
-	    }
-	    if (this.shoe.flat && style === "FLAT") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.bigHeel && style === "BIG HEEL") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.smallHeel && style === "SMALL HEEL") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.wedge && style === "WEDGE") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.boot && style === "BOOT") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	  },
-	
-	  handleDecorationGuess: function handleDecorationGuess(decoration) {
-	    if (decoration === "DEFAULT") {
-	      return;
-	    }
-	    if (this.shoe.buckle && decoration === "BUCKLE") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.laces && decoration === "LACES") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.studded && decoration === "STUDDED") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.openToe && decoration === "OPEN TOES") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	    if (this.shoe.openHeel && decoration === "OPEN HEELS") {
-	      this.shoe.isCorrect = true;
-	      return true;
-	    }
-	  }
-	
-	};
-	
-	module.exports = Logic;
-
-/***/ },
-/* 170 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38076,35 +38006,102 @@
 	module.exports = WhoClues;
 
 /***/ },
-/* 171 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var React = __webpack_require__(1);
+	var shoes = __webpack_require__(159);
 	
-	var WhoPick = function WhoPick(props) {
-	
-	  if (!props.shoes) {
-	    return React.createElement(
-	      "h1",
-	      null,
-	      "I am the Images"
-	    );
-	  }
-	
-	  var imageNodes = props.shoes.map(function (shoe, index) {
-	    return React.createElement("img", { src: shoe.image, index: index, key: index, value: index, id: index, onClick: props.onClick, className: "who-pick" });
-	  });
-	
-	  return React.createElement(
-	    "ul",
-	    { id: "who-pick" },
-	    imageNodes
-	  );
+	var Logic = function Logic(shoe) {
+	  this.shoe = shoe;
+	  this.shoe.isCorrect = false;
 	};
 	
-	module.exports = WhoPick;
+	Logic.prototype = {
+	
+	  handleColourGuess: function handleColourGuess(colour) {
+	    if (colour === "DEFAULT") {
+	      return;
+	    }
+	    if (this.shoe.beige && colour === "BEIGE") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.black && colour === "BLACK") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.red && colour === "RED") {
+	      this.shoe.isCorrect = true;
+	
+	      return true;
+	    }
+	    if (this.shoe.white && colour === "WHITE") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.brown && colour === "BROWN") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	  },
+	
+	  handleStyleGuess: function handleStyleGuess(style) {
+	    if (style === "DEFAULT") {
+	      return;
+	    }
+	    if (this.shoe.flat && style === "FLAT") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.bigHeel && style === "BIG HEEL") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.smallHeel && style === "SMALL HEEL") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.wedge && style === "WEDGE") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.boot && style === "BOOT") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	  },
+	
+	  handleDecorationGuess: function handleDecorationGuess(decoration) {
+	    if (decoration === "DEFAULT") {
+	      return;
+	    }
+	    if (this.shoe.buckle && decoration === "BUCKLE") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.laces && decoration === "LACES") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.studded && decoration === "STUDDED") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.openToe && decoration === "OPEN TOES") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	    if (this.shoe.openHeel && decoration === "OPEN HEELS") {
+	      this.shoe.isCorrect = true;
+	      return true;
+	    }
+	  }
+	
+	};
+	
+	module.exports = Logic;
 
 /***/ }
 /******/ ]);
