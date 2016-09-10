@@ -102,12 +102,14 @@ var WhoBox = React.createClass({
     var array = this.props.game.playerArray[0];
     var computer = this.props.computer;
     var question = computer.makeGuess();
+    console.log( question[0][0].toString() );
     for( var i = 0; i < array.length; i++ ) {
       var opponentLogic = new Logic( array[i] );
       var playerLogic = new Logic( this.state.playerShoe );
-      opponentLogic.handleDecorationGuess( question[0] );
-      playerLogic.handleDecorationGuess( question[0] );
-      this.removeWrongShoes( array[i], question[0] );
+      var stringQuestion = question[0][0].toString()
+      opponentLogic.handleDecorationGuess( stringQuestion );
+      playerLogic.handleColourGuess( stringQuestion );
+      this.removeWrongShoes( array[i], i );
     }
     this.giveQuestion( question[0][1] )
   },
@@ -117,12 +119,12 @@ var WhoBox = React.createClass({
   },
 
   removeWrongShoes: function( shoe, index ) {
+    console.log( this.state.game.playerArray[2] );
     if( shoe.isCorrect === true && this.state.playerShoe.isCorrect != true ) {
-      console.log( this.stae.playerArray[0][index])
-      this.state.playerArray[0].splice( index, 1 );
+      this.state.game.playerArray[2].splice( index, 1 );
     }
     if( shoe.isCorrect != true && this.state.playerShoe.isCorrect === true ) {
-      this.state.playerArray[0].splice( index, 1 );
+      this.state.game.playerArray[2].splice( index, 1 );
     }
   },
 
@@ -134,8 +136,8 @@ var WhoBox = React.createClass({
     if( shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true ) {
       display.className = "eliminated"
     }
-    this.handleTurnDisplay();
-    this.opponentHandler();
+    // this.handleTurnDisplay();
+    // this.opponentHandler();
   },
 
   onDecorationChange: function( event ) {
