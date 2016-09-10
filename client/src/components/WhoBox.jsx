@@ -1,9 +1,6 @@
 var React = require( 'react' );
 var WhoViewer = require( './WhoViewer' );
-var WhoColour = require( './WhoColour' );
-var WhoStyle = require( './WhoStyle' );
-var WhoStyle = require( './WhoStyle' );
-var WhoDecoration = require( './WhoDecoration' );
+var WhoClues = require( './WhoClues' );
 var Logic = require( '../models/Logic' );
 
 var WhoBox = React.createClass({
@@ -65,15 +62,16 @@ var WhoBox = React.createClass({
     if( shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true ) {
       display.className = "eliminated";
     }
+    if( shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true ) {
+      display.className = "eliminated"
+    }
   },
 
   render: function() {
     return(
       <div>
         <WhoViewer shoes={ this.state.shoes } onDblClick={ this.pickPlayerCard } onClick={ this.eliminateCard } />
-        <WhoColour onColourChange={ this.onColourChange } />
-        <WhoStyle onStyleChange={ this.onStyleChange } />
-        <WhoDecoration onDecorationChange={ this.onDecorationChange } />
+        <WhoClues onColourChange={ this.onColourChange } onStyleChange={ this.onStyleChange } onDecorationChange={ this.onDecorationChange } />
       </div>
     )
   }

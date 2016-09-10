@@ -44,9 +44,9 @@ var beigeLowBootStudded = {
   openHeel: false
 }
 
-var beigeOpenToeBuckleStuddedHeel = {
+var beigeOpenHeelBuckleStuddedHeel = {
   name: "Impractical",
-  image: "/images/beige-open-toe-buckle-studded-heel.jpg",
+  image: "/images/beige-open-heel-buckle-studded-heel.jpg",
   isYourCard: false,
   isTheirCard: false,
   isEliminated: false,
@@ -63,8 +63,8 @@ var beigeOpenToeBuckleStuddedHeel = {
   laces: false,
   studded: true,
   buckle: true,
-  openToe: true,
-  openHeel: false
+  openToe: false,
+  openHeel: true
 }
 
 var beigeOpenToeOpenHeelWedge = {
@@ -550,6 +550,6 @@ var whiteWedgeStudded = {
   openHeel: false
 }
 
-var playerShoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded ];
+var playerShoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenHeelBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded ];
 
 module.exports = playerShoes;

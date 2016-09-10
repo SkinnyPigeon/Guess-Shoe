@@ -35,6 +35,9 @@ Logic.prototype = {
   },
 
   handleStyleGuess: function( style ) {
+    if( style === "DEFAULT" ) {
+      return;
+    }
     if( this.shoe.flat && style === "FLAT" ) {
       this.shoe.isCorrect = true;
       return true;
@@ -58,6 +61,9 @@ Logic.prototype = {
   },
 
   handleDecorationGuess: function( decoration ) {
+    if( decoration === "DEFAULT" ) {
+      return;
+    }
     if( this.shoe.buckle && decoration === "BUCKLE" ) {
       this.shoe.isCorrect = true;
       return true;

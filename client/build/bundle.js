@@ -19807,9 +19807,9 @@
 	  openHeel: false
 	};
 	
-	var beigeOpenToeBuckleStuddedHeel = {
+	var beigeOpenHeelBuckleStuddedHeel = {
 	  name: "Impractical",
-	  image: "/images/beige-open-toe-buckle-studded-heel.jpg",
+	  image: "/images/beige-open-heel-buckle-studded-heel.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19826,8 +19826,8 @@
 	  laces: false,
 	  studded: true,
 	  buckle: true,
-	  openToe: true,
-	  openHeel: false
+	  openToe: false,
+	  openHeel: true
 	};
 	
 	var beigeOpenToeOpenHeelWedge = {
@@ -20313,7 +20313,7 @@
 	  openHeel: false
 	};
 	
-	var playerShoes = [beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded];
+	var playerShoes = [beigeHeeledBoot, beigeLowBootStudded, beigeOpenHeelBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded];
 	
 	module.exports = playerShoes;
 
@@ -20369,9 +20369,9 @@
 	  openHeel: false
 	};
 	
-	var beigeOpenToeBuckleStuddedHeel = {
+	var beigeOpenHeelBuckleStuddedHeel = {
 	  name: "Impractical",
-	  image: "/images/beige-open-toe-buckle-studded-heel.jpg",
+	  image: "/images/beige-open-heel-buckle-studded-heel.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20388,8 +20388,8 @@
 	  laces: false,
 	  studded: true,
 	  buckle: true,
-	  openToe: true,
-	  openHeel: false
+	  openToe: false,
+	  openHeel: true
 	};
 	
 	var beigeOpenToeOpenHeelWedge = {
@@ -20875,7 +20875,7 @@
 	  openHeel: false
 	};
 	
-	var playerShoes = [beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded];
+	var playerShoes = [beigeHeeledBoot, beigeLowBootStudded, beigeOpenHeelBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded];
 	
 	module.exports = playerShoes;
 
@@ -37687,10 +37687,7 @@
 	
 	var React = __webpack_require__(1);
 	var WhoViewer = __webpack_require__(165);
-	var WhoColour = __webpack_require__(166);
-	var WhoStyle = __webpack_require__(167);
-	var WhoStyle = __webpack_require__(167);
-	var WhoDecoration = __webpack_require__(168);
+	var WhoClues = __webpack_require__(170);
 	var Logic = __webpack_require__(169);
 	
 	var WhoBox = React.createClass({
@@ -37754,6 +37751,9 @@
 	    if (shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true) {
 	      display.className = "eliminated";
 	    }
+	    if (shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true) {
+	      display.className = "eliminated";
+	    }
 	  },
 	
 	  render: function render() {
@@ -37761,9 +37761,7 @@
 	      'div',
 	      null,
 	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard }),
-	      React.createElement(WhoColour, { onColourChange: this.onColourChange }),
-	      React.createElement(WhoStyle, { onStyleChange: this.onStyleChange }),
-	      React.createElement(WhoDecoration, { onDecorationChange: this.onDecorationChange })
+	      React.createElement(WhoClues, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange })
 	    );
 	  }
 	
@@ -37803,163 +37801,9 @@
 	module.exports = WhoViewer;
 
 /***/ },
-/* 166 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
-	var WhoColour = function WhoColour(props) {
-	
-	  return React.createElement(
-	    'div',
-	    { className: 'questions' },
-	    React.createElement(
-	      'select',
-	      { id: 'colour-question', onChange: props.onColourChange },
-	      React.createElement(
-	        'option',
-	        { value: 'DEFAULT' },
-	        'Select A Colour'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'RED' },
-	        'Are They Red?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BLACK' },
-	        'Are They Black?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BEIGE' },
-	        'Are They Beige?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'WHITE' },
-	        'Are They White?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BROWN' },
-	        'Are They Brown?'
-	      )
-	    )
-	  );
-	};
-	
-	module.exports = WhoColour;
-
-/***/ },
-/* 167 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
-	var WhoStyle = function WhoStyle(props) {
-	
-	  return React.createElement(
-	    'div',
-	    { className: 'questions' },
-	    React.createElement(
-	      'select',
-	      { id: 'style-question', onChange: props.onStyleChange },
-	      React.createElement(
-	        'option',
-	        { value: 'DEFAULT' },
-	        'Select A Style'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'RED' },
-	        'Are They Flat?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BLACK' },
-	        'Do They Have A Big Heel?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BEIGE' },
-	        'Do They Have A Small Heel?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'WHITE' },
-	        'Are They Wedges?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BROWN' },
-	        'Are They Boots?'
-	      )
-	    )
-	  );
-	};
-	
-	module.exports = WhoStyle;
-
-/***/ },
-/* 168 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
-	var WhoDecoration = function WhoDecoration(props) {
-	
-	  console.log(props);
-	  return React.createElement(
-	    'div',
-	    { className: 'questions' },
-	    React.createElement(
-	      'select',
-	      { id: 'decoration-question', onChange: props.onDecorationChange },
-	      React.createElement(
-	        'option',
-	        { value: 'DEFAULT' },
-	        'Select A Decoration'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'RED' },
-	        'Do They Have A Buckle?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BLACK' },
-	        'Do They Have Laces?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BEIGE' },
-	        'Are They Studded?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'WHITE' },
-	        'Do They Have Open Toes?'
-	      ),
-	      React.createElement(
-	        'option',
-	        { value: 'BROWN' },
-	        'Do They Have Open Heels?'
-	      )
-	    )
-	  );
-	};
-	
-	module.exports = WhoDecoration;
-
-/***/ },
+/* 166 */,
+/* 167 */,
+/* 168 */,
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -38002,6 +37846,9 @@
 	  },
 	
 	  handleStyleGuess: function handleStyleGuess(style) {
+	    if (style === "DEFAULT") {
+	      return;
+	    }
 	    if (this.shoe.flat && style === "FLAT") {
 	      this.shoe.isCorrect = true;
 	      return true;
@@ -38025,6 +37872,9 @@
 	  },
 	
 	  handleDecorationGuess: function handleDecorationGuess(decoration) {
+	    if (decoration === "DEFAULT") {
+	      return;
+	    }
 	    if (this.shoe.buckle && decoration === "BUCKLE") {
 	      this.shoe.isCorrect = true;
 	      return true;
@@ -38050,6 +37900,126 @@
 	};
 	
 	module.exports = Logic;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var WhoClues = function WhoClues(props) {
+	
+	  return React.createElement(
+	    'div',
+	    { className: 'questions' },
+	    React.createElement(
+	      'select',
+	      { id: 'colour-question', onChange: props.onColourChange },
+	      React.createElement(
+	        'option',
+	        { value: 'DEFAULT' },
+	        'Select A Colour'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'RED' },
+	        'Are They Red?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BLACK' },
+	        'Are They Black?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BEIGE' },
+	        'Are They Beige?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'WHITE' },
+	        'Are They White?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BROWN' },
+	        'Are They Brown?'
+	      )
+	    ),
+	    React.createElement(
+	      'select',
+	      { id: 'style-question', onChange: props.onStyleChange },
+	      React.createElement(
+	        'option',
+	        { value: 'DEFAULT' },
+	        'Select A Style'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'FLAT' },
+	        'Are They Flat?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BIG HEEL' },
+	        'Do They Have A Big Heel?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'SMALL HEEL' },
+	        'Do They Have A Small Heel?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'WEDGE' },
+	        'Are They Wedges?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BOOT' },
+	        'Are They Boots?'
+	      )
+	    ),
+	    React.createElement(
+	      'select',
+	      { id: 'decoration-question', onChange: props.onDecorationChange },
+	      React.createElement(
+	        'option',
+	        { value: 'DEFAULT' },
+	        'Select A Decoration'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BUCKLE' },
+	        'Do They Have A Buckle?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'LACES' },
+	        'Do They Have Laces?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'STUDDED' },
+	        'Are They Studded?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'OPEN TOES' },
+	        'Do They Have Open Toes?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'OPEN HEELS' },
+	        'Do They Have Open Heels?'
+	      )
+	    )
+	  );
+	};
+	
+	module.exports = WhoClues;
 
 /***/ }
 /******/ ]);
