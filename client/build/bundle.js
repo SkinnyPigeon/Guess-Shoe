@@ -20890,6 +20890,7 @@
 	var Game = function Game(playerShoes, opponentShoes) {
 	  this.playerArray = [playerShoes, opponentShoes];
 	  this.currentPlayer = 0;
+	  this.opponentShoe = null;
 	};
 	
 	Game.prototype = {
@@ -20902,6 +20903,8 @@
 	    var limit = this.playerArray[1].length - 1;
 	    var index = Math.floor(Math.random() * limit + 1);
 	    this.playerArray[1][index].isTheirCard = true;
+	    this.opponentShoe = this.playerArray[1][index];
+	    console.log(this.opponentShoe);
 	  },
 	
 	  endTurn: function endTurn() {
@@ -37692,7 +37695,7 @@
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { game: this.props.game, shoes: this.props.game.playerArray[0] };
+	    return { game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe };
 	  },
 	
 	  pickPlayerCard: function pickPlayerCard(event) {
@@ -37707,13 +37710,21 @@
 	  },
 	
 	  onColourChange: function onColourChange(event) {
-	    for (var i = 0; i < this.props.game.playerArray[1].length; i++) {
-	      var logic = new Logic(this.props.game.playerArray[1][i]);
-	      logic.handleColourGuess(event.target.value);
-	      if (this.props.game.playerArray[1][i].isEliminated === true) {
-	        this.props.game.playerArray[0][i].className = "eliminated";
-	        console.log(this.props.game.playerArray[0][i].className);
-	      }
+	    var array = this.props.game.playerArray[1];
+	    for (var i = 0; i < array.length; i++) {
+	      var playerLogic = new Logic(array[i]);
+	      var opponentLogic = new Logic(this.state.opponentShoe);
+	      var value = event.target.value;
+	      playerLogic.handleColourGuess(value);
+	      opponentLogic.handleColourGuess(value);
+	      this.hideWrongShoes(array[i], i, value);
+	    }
+	  },
+	
+	  hideWrongShoes: function hideWrongShoes(shoe, index) {
+	    var display = document.getElementById(index);
+	    if (shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true) {
+	      display.className = "eliminated";
 	    }
 	  },
 	
@@ -37721,7 +37732,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard }),
+	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard, hideWrongShoes: this.hideWrongShoes }),
 	      React.createElement(WhoQuestioner, { onColourChange: this.onColourChange })
 	    );
 	  }
@@ -37779,6 +37790,79 @@
 	      { id: 'colour-question', onChange: props.onColourChange },
 	      React.createElement(
 	        'option',
+	        { value: 'DEFAULT' },
+	        'Select A Colour'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'RED' },
+	        'Are They Red?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BLACK' },
+	        'Are They Black?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BEIGE' },
+	        'Are They Beige?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'WHITE' },
+	        'Are They White?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BROWN' },
+	        'Are They Brown?'
+	      )
+	    ),
+	    React.createElement(
+	      'select',
+	      { id: 'style-question', onChange: props.onStyleChange },
+	      React.createElement(
+	        'option',
+	        { value: 'DEFAULT' },
+	        'Select A Style'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'RED' },
+	        'Are They Flat?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BLACK' },
+	        'Do They Have A Big Heel?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BEIGE' },
+	        'Are They Beige?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'WHITE' },
+	        'Are They White?'
+	      ),
+	      React.createElement(
+	        'option',
+	        { value: 'BROWN' },
+	        'Are They Brown?'
+	      )
+	    ),
+	    React.createElement(
+	      'select',
+	      { id: 'decoration-question', onChange: props.onStyleChange },
+	      React.createElement(
+	        'option',
+	        { value: 'DEFAULT' },
+	        'Select A Decoration'
+	      ),
+	      React.createElement(
+	        'option',
 	        { value: 'RED' },
 	        'Are They Red?'
 	      ),
@@ -37818,11 +37902,15 @@
 	
 	var Logic = function Logic(shoe) {
 	  this.shoe = shoe;
+	  this.shoe.isCorrect = false;
 	};
 	
 	Logic.prototype = {
 	
 	  handleColourGuess: function handleColourGuess(colour) {
+	    if (colour === "DEFAULT") {
+	      return;
+	    }
 	    if (this.shoe.beige && colour === "BEIGE") {
 	      this.shoe.isCorrect = true;
 	      return true;

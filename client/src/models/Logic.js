@@ -2,11 +2,15 @@ var shoes = require( './playerShoes' );
 
 var Logic = function( shoe ) {
   this.shoe = shoe;
+  this.shoe.isCorrect = false;
 }
 
 Logic.prototype = {
 
   handleColourGuess: function( colour ) {
+    if( colour === "DEFAULT" ) {
+      return;
+    }
     if( this.shoe.beige && colour === "BEIGE" ) {
       this.shoe.isCorrect = true;
       return true;
@@ -75,6 +79,7 @@ Logic.prototype = {
       return true;
     }
   },
+
 
 }
 

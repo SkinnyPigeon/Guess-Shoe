@@ -3,6 +3,7 @@ var _ = require( 'lodash' );
 var Game = function( playerShoes, opponentShoes ) {
   this.playerArray = [ playerShoes, opponentShoes ];
   this.currentPlayer = 0;
+  this.opponentShoe = null;
 }
 
 Game.prototype = {
@@ -15,6 +16,8 @@ Game.prototype = {
     var limit = this.playerArray[1].length - 1;
     var index = Math.floor(( Math.random() * limit + 1 ));
     this.playerArray[1][ index ].isTheirCard = true;
+    this.opponentShoe = this.playerArray[1][ index ];
+    console.log( this.opponentShoe );
   },
 
   endTurn: function() {
