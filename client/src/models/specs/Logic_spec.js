@@ -40,32 +40,32 @@ describe( 'The Logic: ', function() {
   });
 
   it( 'Should be able to tell if a shoe is flat', function() {
-    var logic = new Logic( shoes[4]);
-    var answer = Logic.handleStyleGuess( 'FLAT' );
+    var logic = new Logic( shoes[5]);
+    var answer = logic.handleStyleGuess( 'FLAT' );
     assert.equal( true, answer );
   });
 
   it( 'Should be able to tell if a shoe is big heeled', function() {
     var logic = new Logic( shoes[0]);
-    var answer = Logic.handleStyleGuess( 'BIG HEEL' );
+    var answer = logic.handleStyleGuess( 'BIG HEEL' );
     assert.equal( true, answer );
   });
 
   it( 'Should be able to tell if a shoe is small heeled', function() {
     var logic = new Logic( shoes[1]);
-    var answer = Logic.handleStyleGuess( 'SMALL HEEL' );
+    var answer = logic.handleStyleGuess( 'SMALL HEEL' );
     assert.equal( true, answer );
   });
 
   it( 'Should be able to tell if a shoe is a wedge', function() {
     var logic = new Logic( shoes[3]);
-    var answer = Logic.handleStyleGuess( 'WEDGE' );
+    var answer = logic.handleStyleGuess( 'WEDGE' );
     assert.equal( true, answer );
   });
 
   it( 'Should be able to tell if a shoe is boot', function() {
     var logic = new Logic( shoes[1]);
-    var answer = Logic.handleStyleGuess( 'BOOT' );
+    var answer = logic.handleStyleGuess( 'BOOT' );
     assert.equal( true, answer );
   });
 

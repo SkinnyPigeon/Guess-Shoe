@@ -7,26 +7,40 @@ var Logic = function( shoe ) {
 Logic.prototype = {
 
   handleColourGuess: function( colour ) {
-    if( this.shoe.beige === true && colour === "BEIGE" ) {
+    if( this.shoe.beige && colour === "BEIGE" ) {
       return true;
     }
-    if( this.shoe.black === true && colour === "BLACK" ) {
+    if( this.shoe.black && colour === "BLACK" ) {
       return true;
     }
-    if( this.shoe.red === true && colour === "RED" ) {
+    if( this.shoe.red && colour === "RED" ) {
       return true;
     }
-    if( this.shoe.white === true && colour === "WHITE" ) {
+    if( this.shoe.white && colour === "WHITE" ) {
       return true;
     }
-    if( this.shoe.brown === true && colour === "BROWN" ) {
+    if( this.shoe.brown && colour === "BROWN" ) {
       return true;
     }
   },
 
   handleStyleGuess: function( style ) {
-    
-  }
+    if( this.shoe.flat && style === "FLAT" ) {
+      return true;
+    }
+    if( this.shoe.bigHeel && style === "BIG HEEL") {
+      return true;
+    }
+    if( this.shoe.smallHeel && style === "SMALL HEEL" ) {
+      return true;
+    }
+    if( this.shoe.wedge && style === "WEDGE" ) {
+      return true;
+    }
+    if( this.shoe.boot && style === "BOOT" ) {
+      return true;
+    }
+  },
 
 }
 
