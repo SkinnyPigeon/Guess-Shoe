@@ -52,13 +52,18 @@
 	var opponentShoes = __webpack_require__(160);
 	var Game = __webpack_require__(161);
 	var WhoBox = __webpack_require__(164);
+	var Opponent = __webpack_require__(169);
 	
 	window.onload = function () {
 	
+	  var computer = new Opponent(playerShoes);
+	
+	  playerShoes[0].isYourCard = true;
 	  var game = new Game(playerShoes, opponentShoes);
 	  game.opponentPickCard();
 	
-	  ReactDOM.render(React.createElement(WhoBox, { game: game }), document.getElementById('app'));
+	  game.playerShoe = game.playerArray[0][0];
+	  ReactDOM.render(React.createElement(WhoBox, { game: game, computer: computer }), document.getElementById('app'));
 	};
 
 /***/ },
@@ -37700,7 +37705,7 @@
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: null };
+	    return { game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: this.props.game.playerShoe, computer: this.props.computer };
 	  },
 	
 	  pickPlayerCard: function pickPlayerCard(event) {
@@ -37739,6 +37744,7 @@
 	    }
 	
 	    if (this.props.game.currentPlayer === 1) {
+	      this.opponentHandler();
 	      this.hidePlayer();
 	    }
 	  },
@@ -37782,6 +37788,18 @@
 	      playerLogic.handleStyleGuess(value);
 	      opponentLogic.handleStyleGuess(value);
 	      this.hideWrongShoes(array[i], i, value);
+	    }
+	  },
+	
+	  opponentHandler: function opponentHandler() {
+	    var array = this.props.game.playerArray[0];
+	    var computer = this.props.computer;
+	    var question = computer.makeGuess();
+	    console.log(question);
+	    for (var i = 0; i < array.length; i++) {
+	      var opponentLogic = new Logic(array[i]);
+	      var playerLogic = new Logic(this.state.playerShoe);
+	      opponentLogic.handleDecorationGuess();
 	    }
 	  },
 	
@@ -38102,6 +38120,39 @@
 	};
 	
 	module.exports = Logic;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var Logic = __webpack_require__(168);
+	var lodash = __webpack_require__(162);
+	
+	var Opponent = function Opponent(playerShoes) {
+	
+	  this.playerShoes = playerShoes;
+	  this.questions = [[["RED"], ["Are They Red?"]], [["BLACK"], ["Are They Black?"]], [["BEIGE"], ["Are They Beige?"]], [["WHITE"], ["Are They White?"]], [["BROWN"], ["Are They Brown?"]], [["FLAT"], ["Are They Flat?"]], [["BIG HEEL"], ["Do They Have A Big Heel?"]], [["SMALL HEEL"], ["Do They Have A Small Heel?"]], [["WEDGE"]["Are They Wedges?"]], [["BOOT"]["Are They Boots?"]], [["BUCKLE"], ["Do They Have A Buckle?"]], [["LACES"], ["Do They Have Laces?"]], [["STUDDED"], ["Are They Studded?"]], [["OPEN TOES"], ["Do They Have Open Toes?"]], [["OPEN HEELS"], ["Do They Have Open Heels?"]]];
+	};
+	
+	Opponent.prototype = {
+	
+	  shuffle: function shuffle() {
+	    _.shuffle(this.questions);
+	  },
+	
+	  makeGuess: function makeGuess() {
+	    this.shuffle();
+	    console.log(this.questions);
+	    var result = _.take(this.questions);
+	    console.log(result);
+	    return result;
+	  }
+	
+	};
+	
+	module.exports = Opponent;
 
 /***/ }
 /******/ ]);

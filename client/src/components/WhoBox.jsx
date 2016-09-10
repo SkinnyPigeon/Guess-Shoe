@@ -4,10 +4,11 @@ var WhoViewer = require( './WhoViewer' );
 var WhoClues = require( './WhoClues' );
 var Logic = require( '../models/Logic' );
 
+
 var WhoBox = React.createClass({
 
   getInitialState: function() {
-    return{ game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: null }
+    return{ game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: this.props.game.playerShoe, computer: this.props.computer }
   },
 
   pickPlayerCard: function( event ) {
@@ -46,6 +47,7 @@ var WhoBox = React.createClass({
     }
 
     if( this.props.game.currentPlayer === 1 ) {
+      this.opponentHandler();
       this.hidePlayer();
     }
   },
@@ -89,6 +91,18 @@ var WhoBox = React.createClass({
       playerLogic.handleStyleGuess( value );
       opponentLogic.handleStyleGuess( value );
       this.hideWrongShoes( array[i], i, value );
+    }
+  },
+
+  opponentHandler: function() {
+    var array = this.props.game.playerArray[0];
+    var computer = this.props.computer;
+    var question = computer.makeGuess();
+    console.log( question );
+    for( var i = 0; i < array.length; i++ ) {
+      var opponentLogic = new Logic( array[i] );
+      var playerLogic = new Logic( this.state.playerShoe );
+      opponentLogic.handleDecorationGuess(  )
     }
   },
 
