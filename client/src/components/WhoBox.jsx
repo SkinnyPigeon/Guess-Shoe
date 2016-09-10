@@ -52,7 +52,6 @@ var WhoBox = React.createClass({
     }
 
     if( this.props.game.currentPlayer === 1 ) {
-      this.opponentHandler();
       this.hidePlayer();
     }
   },
@@ -146,7 +145,7 @@ var WhoBox = React.createClass({
     return(
       <div>
         <WhoViewer shoes={ this.state.shoes } onClick={ this.eliminateCard } />
-        <WhoTrue question={ this.state.question } />
+        <WhoTrue question={ this.state.question } onClick={ this.opponentHandler }/>
         <WhoClues onColourChange={ this.onColourChange } onStyleChange={ this.onStyleChange } onDecorationChange={ this.onDecorationChange } />
       </div>
     )

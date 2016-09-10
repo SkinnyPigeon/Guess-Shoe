@@ -6,10 +6,10 @@ var WhoTrue = function( props ) {
 
   return(
     <div>
-      <h1>{ props.question }</h1>
-      <ul>
-        <button value="Yes" text="Yes" />
-        <button value="No" />
+      <p>{ props.question }</p>
+      <ul id="buttons">
+        <button onClick={ props.onClick } >Yes</button>
+        <button onClick={ props.onClick } >No</button>
       </ul>
     </div>
   )

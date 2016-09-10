@@ -3,6 +3,7 @@ var lodash = require( 'lodash' );
 
 var Opponent = function( playerShoes ) {
 
+  console.log( playerShoes );
   this.playerShoes = playerShoes;
   this.questions =  [ [[ "RED" ], [ "Are They Red?" ]]
                     , [[ "BLACK" ], [ "Are They Black?" ]]
@@ -24,17 +25,21 @@ var Opponent = function( playerShoes ) {
 Opponent.prototype = {
 
   shuffle: function() {
-    console.log( this.questions );
     this.questions = _.shuffle( this.questions );
-    console.log( this.questions );
-
   },
 
   makeGuess: function() {
+    console.log( this.playerShoes );
     this.shuffle();
-    console.log( this.questions[0] );
     var result = _.take( this.questions );
+    this.questions.splice( 0, 1 );
     return result;
+  },
+
+  checkCard: function() {
+    if( this.playerShoes.length === 1 ) {
+      console.log( this.playerShoes[0].name );
+    }
   }
 
 }

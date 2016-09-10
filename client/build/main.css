@@ -4,6 +4,7 @@ body{
 
 ul {
   padding: 5%;
+  padding-bottom: 0;
   text-align: center;
 }
 
@@ -91,4 +92,11 @@ ul.hide-pick {
   display: none;
 }
 
+p {
+  text-align: center;
+}
 
+#buttons {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
