@@ -7,12 +7,17 @@ var Logic = require( '../models/Logic' );
 var WhoBox = React.createClass({
 
   getInitialState: function() {
-    return{ game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe }
+    return{ game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: null }
   },
 
   pickPlayerCard: function( event ) {
     var index = event.target.id;
     this.props.game.playerPickCard( index );
+    var hide = document.getElementById( 'who-pick' );
+    var show = document.getElementById( 'who-view' );
+    hide.className = 'hide-pick';
+    console.log( hide );
+    console.log( this.props.game.playerShoe );
   },
 
   eliminateCard: function( event ) {
@@ -71,8 +76,8 @@ var WhoBox = React.createClass({
   render: function() {
     return(
       <div>
-        <WhoPick onClick={ this.pickPlayerCard } />
-        <WhoViewer shoes={ this.state.shoes } onDblClick={ this.pickPlayerCard } onClick={ this.eliminateCard } />
+        <WhoPick shoes={ this.state.shoes } onClick={ this.pickPlayerCard } />
+        <WhoViewer shoes={ this.state.shoes } onClick={ this.eliminateCard } />
         <WhoClues onColourChange={ this.onColourChange } onStyleChange={ this.onStyleChange } onDecorationChange={ this.onDecorationChange } />
       </div>
     )

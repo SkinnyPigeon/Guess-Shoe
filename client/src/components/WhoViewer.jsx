@@ -11,7 +11,7 @@ var WhoViewer = function( props ) {
     })
 
   return(
-    <ul>
+    <ul id="who-view">
       { imageNodes }
     </ul>
   )

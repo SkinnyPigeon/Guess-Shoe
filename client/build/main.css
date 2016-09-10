@@ -11,6 +11,32 @@ li {
   padding: 0.5%;
 }
 
+img.who-pick {
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -ms-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+img.who-pick {
+  max-width: 10%;
+  max-height: 10%;
+  margin: 0.5%;
+  border: 1px solid black;
+}
+
+
+
+img:hover.who-pick {
+  box-shadow: 2px 2px 1px grey;
+  -webkit-transform: scale(1.8);
+    -moz-transform: scale(1.8);
+    -ms-transform: scale(1.8);
+    -o-transform: scale(1.8);
+    transform: scale(1.8);   
+}
+
 img.active {
     -webkit-transition: all 0.7s ease;
     -moz-transition: all 0.7s ease;
@@ -55,6 +81,14 @@ img.eliminated {
 
 .questions {
   text-align: center;
+}
+
+ul.hide-pick {
+  display: none;
+}
+
+#who-view ul {
+  display: none;
 }
 
 

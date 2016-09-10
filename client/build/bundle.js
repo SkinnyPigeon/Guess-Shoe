@@ -37698,12 +37698,17 @@
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe };
+	    return { game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: null };
 	  },
 	
 	  pickPlayerCard: function pickPlayerCard(event) {
 	    var index = event.target.id;
 	    this.props.game.playerPickCard(index);
+	    var hide = document.getElementById('who-pick');
+	    var show = document.getElementById('who-view');
+	    hide.className = 'hide-pick';
+	    console.log(hide);
+	    console.log(this.props.game.playerShoe);
 	  },
 	
 	  eliminateCard: function eliminateCard(event) {
@@ -37763,8 +37768,8 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(WhoPick, { onClick: this.pickPlayerCard }),
-	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard }),
+	      React.createElement(WhoPick, { shoes: this.state.shoes, onClick: this.pickPlayerCard }),
+	      React.createElement(WhoViewer, { shoes: this.state.shoes, onClick: this.eliminateCard }),
 	      React.createElement(WhoClues, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange })
 	    );
 	  }
@@ -37797,7 +37802,7 @@
 	
 	  return React.createElement(
 	    "ul",
-	    null,
+	    { id: "who-view" },
 	    imageNodes
 	  );
 	};
@@ -38049,7 +38054,7 @@
 	
 	  return React.createElement(
 	    "ul",
-	    null,
+	    { id: "who-pick" },
 	    imageNodes
 	  );
 	};

@@ -11,7 +11,7 @@ var WhoPick = function( props ) {
     })
 
   return(
-    <ul>
+    <ul id="who-pick">
       { imageNodes }
     </ul>
   )
