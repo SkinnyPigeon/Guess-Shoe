@@ -13,6 +13,30 @@ describe( 'The Logic: ', function() {
     var logic = new Logic( shoes[0] );
     var answer = logic.handleColourGuess( 'BEIGE' );
     assert.equal( true, answer );
-  })
+  });
+
+  it( 'Should be able to tell if a show is black', function() {
+    var logic = new Logic( shoes[6] );
+    var answer = logic.handleColourGuess( 'BLACK' );
+    assert.equal( true, answer );
+  });
+
+  it( 'Should be able to tell if a show is white', function() {
+    var logic = new Logic( shoes[23] );
+    var answer = logic.handleColourGuess( 'WHITE' );
+    assert.equal( true, answer );
+  });
+
+  it( 'Should be able to tell if a show is brown', function() {
+    var logic = new Logic( shoes[11] );
+    var answer = logic.handleColourGuess( 'BROWN' );
+    assert.equal( true, answer );
+  });
+
+  it( 'Should be able to tell if a show is red', function() {
+    var logic = new Logic( shoes[16] );
+    var answer = logic.handleColourGuess( 'RED' );
+    assert.equal( true, answer );
+  });
 
 });
