@@ -552,6 +552,6 @@ var whiteWedgeStudded = {
 
 // var tinyShoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded ];
 
-var testShoes = [ beigeHeeledBoot, beigeLowBootStudded ];
+var testShoes = [ beigeHeeledBoot, beigeLowBootStudded, beigeOpenToeBuckleStuddedHeel ];
 
 module.exports = testShoes;
