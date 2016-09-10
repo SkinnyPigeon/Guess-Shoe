@@ -4,12 +4,14 @@ var Game = function( playerShoes, opponentShoes ) {
   this.playerArray = [ playerShoes, opponentShoes ];
   this.currentPlayer = 0;
   this.opponentShoe = null;
+  this.playerShoe = null;
 }
 
 Game.prototype = {
 
   playerPickCard: function( shoeIndex ) {
     this.playerArray[ this.currentPlayer ][ shoeIndex ].isYourCard = true;
+    this.playerShoe = this.playerArray[ this.currentPlayer ][ shoeIndex ];
   },
 
   opponentPickCard: function() {

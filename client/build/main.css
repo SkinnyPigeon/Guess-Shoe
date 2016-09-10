@@ -12,6 +12,14 @@ li {
 }
 
 img.active {
+    -webkit-transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -ms-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+img.active {
   max-width: 10%;
   max-height: 10%;
   margin: 0.5%;
@@ -20,6 +28,11 @@ img.active {
 
 img:hover.active {
   box-shadow: 2px 2px 1px grey;
+  -webkit-transform: scale(1.8);
+    -moz-transform: scale(1.8);
+    -ms-transform: scale(1.8);
+    -o-transform: scale(1.8);
+    transform: scale(1.8);   
 }
 
 p {
@@ -38,6 +51,10 @@ img.eliminated {
 .eliminated {
   opacity: 0.3;
   pointer-events: none;
+}
+
+.questions {
+  text-align: center;
 }
 
 

@@ -20891,12 +20891,14 @@
 	  this.playerArray = [playerShoes, opponentShoes];
 	  this.currentPlayer = 0;
 	  this.opponentShoe = null;
+	  this.playerShoe = null;
 	};
 	
 	Game.prototype = {
 	
 	  playerPickCard: function playerPickCard(shoeIndex) {
 	    this.playerArray[this.currentPlayer][shoeIndex].isYourCard = true;
+	    this.playerShoe = this.playerArray[this.currentPlayer][shoeIndex];
 	  },
 	
 	  opponentPickCard: function opponentPickCard() {
@@ -37686,6 +37688,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var WhoPick = __webpack_require__(171);
 	var WhoViewer = __webpack_require__(165);
 	var WhoClues = __webpack_require__(170);
 	var Logic = __webpack_require__(169);
@@ -37760,6 +37763,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
+	      React.createElement(WhoPick, { onClick: this.pickPlayerCard }),
 	      React.createElement(WhoViewer, { shoes: this.state.shoes, onDblClick: this.pickPlayerCard, onClick: this.eliminateCard }),
 	      React.createElement(WhoClues, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange })
 	    );
@@ -37788,7 +37792,7 @@
 	  }
 	
 	  var imageNodes = props.shoes.map(function (shoe, index) {
-	    return React.createElement("img", { src: shoe.image, index: index, key: index, value: index, id: index, onDoubleClick: props.onDblClick, onClick: props.onClick, className: "active" });
+	    return React.createElement("img", { src: shoe.image, index: index, key: index, value: index, id: index, onClick: props.onClick, className: "active" });
 	  });
 	
 	  return React.createElement(
@@ -38020,6 +38024,37 @@
 	};
 	
 	module.exports = WhoClues;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var WhoPick = function WhoPick(props) {
+	
+	  if (!props.shoes) {
+	    return React.createElement(
+	      "h1",
+	      null,
+	      "I am the Images"
+	    );
+	  }
+	
+	  var imageNodes = props.shoes.map(function (shoe, index) {
+	    return React.createElement("img", { src: shoe.image, index: index, key: index, value: index, id: index, onClick: props.onClick, className: "who-pick" });
+	  });
+	
+	  return React.createElement(
+	    "ul",
+	    null,
+	    imageNodes
+	  );
+	};
+	
+	module.exports = WhoPick;
 
 /***/ }
 /******/ ]);

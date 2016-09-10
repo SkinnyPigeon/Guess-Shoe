@@ -1,4 +1,5 @@
 var React = require( 'react' );
+var WhoPick = require( './WhoPick' );
 var WhoViewer = require( './WhoViewer' );
 var WhoClues = require( './WhoClues' );
 var Logic = require( '../models/Logic' );
@@ -70,6 +71,7 @@ var WhoBox = React.createClass({
   render: function() {
     return(
       <div>
+        <WhoPick onClick={ this.pickPlayerCard } />
         <WhoViewer shoes={ this.state.shoes } onDblClick={ this.pickPlayerCard } onClick={ this.eliminateCard } />
         <WhoClues onColourChange={ this.onColourChange } onStyleChange={ this.onStyleChange } onDecorationChange={ this.onDecorationChange } />
       </div>
