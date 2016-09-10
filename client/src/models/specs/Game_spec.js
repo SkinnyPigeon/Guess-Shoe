@@ -29,7 +29,7 @@ describe( 'The Game: ', function() {
   it( 'Should be able to end the turn', function() {
     game.playerPickCard( 0 );
     game.endTurn();
-    assert.equal( false, game.playerArray[0][0].isYourCard );
+    assert.equal( false, game.playerArray[1][0].isYourCard );
   });
 
 

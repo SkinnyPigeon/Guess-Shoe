@@ -19762,7 +19762,7 @@
 	
 	var beigeHeeledBoot = {
 	  name: "Puffy Ugly Beige Shoe",
-	  image: "./css/image/beige-heeled-boot.jpg",
+	  image: "/images/beige-heeled-boot.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19785,7 +19785,7 @@
 	
 	var beigeLowBootStudded = {
 	  name: "Spikey Balsa-Wood Heeled Boot",
-	  image: "./css/image/beige-low-boot-studded",
+	  image: "/images/beige-low-boot-studded.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19808,7 +19808,7 @@
 	
 	var beigeOpenToeBuckleStuddedHeel = {
 	  name: "Impractical",
-	  image: "./css/image/beige-open-toe-buckle-studded-heel.jpg",
+	  image: "/images/beige-open-toe-buckle-studded-heel.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19831,7 +19831,7 @@
 	
 	var beigeOpenToeOpenHeelWedge = {
 	  name: "The Unlwalkable In",
-	  image: "./css/image/beige-open-toe-open-heel-wedge.jpg",
+	  image: "/images/beige-open-toe-open-heel-wedge.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19854,7 +19854,7 @@
 	
 	var beigeWedgeBoot = {
 	  name: "Tiptoe Sweat Boxes",
-	  image: "./css/image/beige-wedge-boot.jpg",
+	  image: "/images/beige-wedge-boot.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19877,7 +19877,7 @@
 	
 	var blackFlatBuckle = {
 	  name: "A Normal Black Shoe",
-	  image: "./css/image/black-flat-buckle.jpg",
+	  image: "/images/black-flat-buckle.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19900,7 +19900,7 @@
 	
 	var blackHeelBootOpenToe = {
 	  name: "Walk Awkard In Black",
-	  image: "./css/image/black-heeled-boot-open-toe.jpg",
+	  image: "/images/black-heeled-boot-open-toe.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19923,7 +19923,7 @@
 	
 	var blackHeeledLaces = {
 	  name: "Impossible Heel",
-	  image: "./css/image/black-heeled-laces.jpg",
+	  image: "/images/black-heeled-laces.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19946,7 +19946,7 @@
 	
 	var blackHeeledToe = {
 	  name: "A Long Way To Fall",
-	  image: "./css/image/black-heeled-toe.jpg",
+	  image: "/images/black-heeled-toe.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19969,7 +19969,7 @@
 	
 	var blackOpenHeel = {
 	  name: "Not Too Bad, Standard Black Shoe",
-	  image: "./css/image/black-open-heel.jpg",
+	  image: "/images/black-open-heel.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -19992,7 +19992,7 @@
 	
 	var brownBuckleHeeledBoot = {
 	  name: "Needless Boot With Too Many Buckles",
-	  image: "./css/image/brown-buckle-heeled-boot.jpg",
+	  image: "/images/brown-buckle-heeled-boot.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20015,7 +20015,7 @@
 	
 	var brownHeeledStuddedOpenToe = {
 	  name: "The Ball Crusher",
-	  image: "./css/image/brown-heeled-studded-open-toe.jpg",
+	  image: "/images/brown-heeled-studded-open-toe.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20038,7 +20038,7 @@
 	
 	var brownOpenToeLaces = {
 	  name: "Fancy Gladiator",
-	  image: "./css/image/brown-open-toe-laces.jpg",
+	  image: "/images/brown-open-toe-laces.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20061,7 +20061,7 @@
 	
 	var brownWedge = {
 	  name: "Hill Walk In Style",
-	  image: "./css/image/brown-wedge.jpg",
+	  image: "/images/brown-wedge.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20084,7 +20084,7 @@
 	
 	var redBootHeeledToe = {
 	  name: "Rocky Horror",
-	  image: "./css/image/red-boot-heeled-toe.jpg",
+	  image: "/images/red-boot-heeled-toe.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20107,7 +20107,7 @@
 	
 	var redHeeledLaces = {
 	  name: "Scarlet Pimpernel",
-	  image: "./css/image/red-heeled-laces.jpg",
+	  image: "/images/red-heeled-laces.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20130,7 +20130,7 @@
 	
 	var redOpenHeelBuckle = {
 	  name: "Dorathy's Heel",
-	  image: "./css/image/red-open-heel-buckle.jpg",
+	  image: "/images/red-open-heel-buckle.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20153,7 +20153,7 @@
 	
 	var redWedgeBoot = {
 	  name: "The Eddie Izzard",
-	  image: "./css/image/red-wedge-boot.jpg",
+	  image: "/images/red-wedge-boot.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20176,7 +20176,7 @@
 	
 	var redWedge = {
 	  name: "Too Busy",
-	  image: "./css/image/red-wedge.jpg",
+	  image: "/images/red-wedge.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20199,7 +20199,7 @@
 	
 	var whiteFlatLaces = {
 	  name: "Plain Bowling Shoe",
-	  image: "./css/image/white-flat-laces.jpg",
+	  image: "/images/white-flat-laces.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20222,7 +20222,7 @@
 	
 	var whiteLacesOpenToeFlat = {
 	  name: "Missing A Few Bits",
-	  image: "./css/image/white-laces-open-toe-flat.jpg",
+	  image: "/images/white-laces-open-toe-flat.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20245,7 +20245,7 @@
 	
 	var whiteLowLaced = {
 	  name: "The Dolly",
-	  image: "./css/image/white-low-laced.jpg",
+	  image: "/images/white-low-laced.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20268,7 +20268,7 @@
 	
 	var whiteLowOpenHeeledBuckle = {
 	  name: "They Look Fine",
-	  image: "./css/image/white-low-open-heeled-buckle.jpg",
+	  image: "/images/white-low-open-heeled-buckle.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20291,7 +20291,7 @@
 	
 	var whiteWedgeStudded = {
 	  name: "Nike Gone Mad",
-	  image: "./css/image/white-wedge-studded.jpg",
+	  image: "/images/white-wedge-studded.jpg",
 	  isYourCard: false,
 	  isTheirCard: false,
 	  isEliminated: false,
@@ -20890,12 +20890,13 @@
 	
 	var Game = function Game(playerShoes, opponentShoes) {
 	  this.playerArray = [playerShoes, opponentShoes];
+	  this.currentPlayer = 0;
 	};
 	
 	Game.prototype = {
 	
 	  playerPickCard: function playerPickCard(shoeIndex) {
-	    this.playerArray[0][shoeIndex].isYourCard = true;
+	    this.playerArray[this.currentPlayer][shoeIndex].isYourCard = true;
 	  },
 	
 	  opponentPickCard: function opponentPickCard() {
@@ -20905,7 +20906,12 @@
 	  },
 	
 	  endTurn: function endTurn() {
-	    _.reverse(this.playerArray);
+	    if (this.currentPlayer === 0) {
+	      this.currentPlayer = 1;
+	    }
+	    if (this.currentPlayer === 1) {
+	      this.currentPlayer = 0;
+	    }
 	  }
 	};
 	
@@ -37674,22 +37680,64 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var WhoViewer = __webpack_require__(165);
 	
 	var WhoBox = React.createClass({
 	  displayName: 'WhoBox',
 	
 	
+	  getInitialState: function getInitialState() {
+	    return { game: this.props.game, shoes: this.props.game.playerArray[0] };
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
-	      'h1',
+	      'div',
 	      null,
-	      'App Is Working'
+	      React.createElement(
+	        'h1',
+	        null,
+	        'App Is Working'
+	      ),
+	      React.createElement(WhoViewer, { shoes: this.state.shoes })
 	    );
 	  }
 	
 	});
 	
 	module.exports = WhoBox;
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var WhoViewer = function WhoViewer(props) {
+	
+	  console.log(props);
+	  if (!props.shoes) {
+	    return React.createElement(
+	      'h1',
+	      null,
+	      'I am the Images'
+	    );
+	  }
+	
+	  var imageNodes = props.shoes.map(function (shoe, index) {
+	    return React.createElement('img', { src: shoe.image, index: index, key: index });
+	  });
+	
+	  return React.createElement(
+	    'ul',
+	    null,
+	    imageNodes
+	  );
+	};
+	
+	module.exports = WhoViewer;
 
 /***/ }
 /******/ ]);
