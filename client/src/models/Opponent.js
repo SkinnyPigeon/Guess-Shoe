@@ -29,9 +29,7 @@ Opponent.prototype = {
 
   makeGuess: function() {
     this.shuffle();
-    console.log( this.questions );
     var result = _.take( this.questions );
-    console.log( result )
     return result;
   }
 

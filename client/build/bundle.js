@@ -37795,11 +37795,12 @@
 	    var array = this.props.game.playerArray[0];
 	    var computer = this.props.computer;
 	    var question = computer.makeGuess();
-	    console.log(question);
+	    console.log(question[0][0]);
 	    for (var i = 0; i < array.length; i++) {
 	      var opponentLogic = new Logic(array[i]);
 	      var playerLogic = new Logic(this.state.playerShoe);
-	      opponentLogic.handleDecorationGuess();
+	      opponentLogic.handleDecorationGuess(question[0][0]);
+	      playerLogic.handleDecorationGuess(question[0][0]);
 	    }
 	  },
 	
@@ -38144,9 +38145,7 @@
 	
 	  makeGuess: function makeGuess() {
 	    this.shuffle();
-	    console.log(this.questions);
 	    var result = _.take(this.questions);
-	    console.log(result);
 	    return result;
 	  }
 	
