@@ -37802,14 +37802,37 @@
 	    for (var i = 0; i < array.length; i++) {
 	      var opponentLogic = new Logic(array[i]);
 	      var playerLogic = new Logic(this.state.playerShoe);
-	      opponentLogic.handleDecorationGuess(question[0][0]);
-	      playerLogic.handleDecorationGuess(question[0][0]);
+	      opponentLogic.handleDecorationGuess(question[0]);
+	      playerLogic.handleDecorationGuess(question[0]);
+	      this.removeWrongShoes(array[i], question[0]);
 	    }
 	    this.giveQuestion(question[0][1]);
 	  },
 	
 	  giveQuestion: function giveQuestion(question) {
 	    this.setState({ question: question });
+	  },
+	
+	  removeWrongShoes: function removeWrongShoes(shoe, index) {
+	    if (shoe.isCorrect === true && this.state.playerShoe.isCorrect != true) {
+	      console.log(this.stae.playerArray[0][index]);
+	      this.state.playerArray[0].splice(index, 1);
+	    }
+	    if (shoe.isCorrect != true && this.state.playerShoe.isCorrect === true) {
+	      this.state.playerArray[0].splice(index, 1);
+	    }
+	  },
+	
+	  hideWrongShoes: function hideWrongShoes(shoe, index) {
+	    var display = document.getElementById(index);
+	    if (shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true) {
+	      display.className = "eliminated";
+	    }
+	    if (shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true) {
+	      display.className = "eliminated";
+	    }
+	    this.handleTurnDisplay();
+	    this.opponentHandler();
 	  },
 	
 	  onDecorationChange: function onDecorationChange(event) {
@@ -37824,18 +37847,6 @@
 	      opponentLogic.handleDecorationGuess(value);
 	      this.hideWrongShoes(array[i], i, value);
 	    }
-	  },
-	
-	  hideWrongShoes: function hideWrongShoes(shoe, index) {
-	    var display = document.getElementById(index);
-	    if (shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true) {
-	      display.className = "eliminated";
-	    }
-	    if (shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true) {
-	      display.className = "eliminated";
-	    }
-	    this.handleTurnDisplay();
-	    this.opponentHandler();
 	  },
 	
 	  render: function render() {
