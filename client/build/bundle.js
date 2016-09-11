@@ -60,11 +60,11 @@
 	
 	  var computer = new Opponent(playerShoes);
 	
-	  playerShoes[0].isYourCard = true;
+	  playerShoes[5].isYourCard = true;
 	  var game = new Game(playerShoes, opponentShoes, backupShoes, backupShoesTwo);
 	  game.opponentPickCard();
 	
-	  game.playerShoe = game.playerArray[0][0];
+	  game.playerShoe = game.playerArray[0][5];
 	  ReactDOM.render(React.createElement(WhoBox, { game: game, computer: computer }), document.getElementById('app'));
 	};
 
@@ -19918,8 +19918,8 @@
 	  brown: false,
 	  red: false,
 	  flat: false,
-	  bigHeel: true,
-	  smallHeel: false,
+	  bigHeel: false,
+	  smallHeel: true,
 	  boot: true,
 	  wedge: false,
 	  laces: false,
@@ -19988,7 +19988,7 @@
 	  red: false,
 	  flat: false,
 	  bigHeel: false,
-	  smallHeel: false,
+	  smallHeel: true,
 	  boot: false,
 	  wedge: false,
 	  laces: false,
@@ -20010,8 +20010,8 @@
 	  brown: true,
 	  red: false,
 	  flat: false,
-	  bigHeel: true,
-	  smallHeel: false,
+	  bigHeel: false,
+	  smallHeel: true,
 	  boot: true,
 	  wedge: false,
 	  laces: false,
@@ -20480,8 +20480,8 @@
 	  brown: false,
 	  red: false,
 	  flat: false,
-	  bigHeel: true,
-	  smallHeel: false,
+	  bigHeel: false,
+	  smallHeel: true,
 	  boot: true,
 	  wedge: false,
 	  laces: false,
@@ -20550,7 +20550,7 @@
 	  red: false,
 	  flat: false,
 	  bigHeel: false,
-	  smallHeel: false,
+	  smallHeel: true,
 	  boot: false,
 	  wedge: false,
 	  laces: false,
@@ -20572,8 +20572,8 @@
 	  brown: true,
 	  red: false,
 	  flat: false,
-	  bigHeel: true,
-	  smallHeel: false,
+	  bigHeel: false,
+	  smallHeel: true,
 	  boot: true,
 	  wedge: false,
 	  laces: false,
@@ -37825,8 +37825,6 @@
 	    var array = this.props.game.playerArray[2];
 	    var computer = this.props.computer;
 	    var question = computer.makeGuess();
-	    console.log(array);
-	    console.log(question[0][0].toString());
 	    for (var i = 0; i < array.length; i++) {
 	      var opponentLogic = new Logic(array[i]);
 	      var playerLogic = new Logic(this.state.playerShoe);
@@ -37863,15 +37861,12 @@
 	  hideWrongShoes: function hideWrongShoes(shoe, index) {
 	    var display = document.getElementById(index);
 	    if (shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true) {
-	      this.state.game.playerArray[3].splice(index, 1);
 	      display.className = "eliminated";
 	    }
 	    if (shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true) {
-	      this.state.game.playerArray[3].splice(index, 1);
 	      display.className = "eliminated";
 	    }
 	    this.handleTurnDisplay();
-	    console.log(this.state.game.playerArray);
 	  },
 	
 	  onDecorationChange: function onDecorationChange(event) {
@@ -38427,8 +38422,8 @@
 	  brown: false,
 	  red: false,
 	  flat: false,
-	  bigHeel: true,
-	  smallHeel: false,
+	  bigHeel: false,
+	  smallHeel: true,
 	  boot: true,
 	  wedge: false,
 	  laces: false,
@@ -38497,7 +38492,7 @@
 	  red: false,
 	  flat: false,
 	  bigHeel: false,
-	  smallHeel: false,
+	  smallHeel: true,
 	  boot: false,
 	  wedge: false,
 	  laces: false,
@@ -38519,8 +38514,8 @@
 	  brown: true,
 	  red: false,
 	  flat: false,
-	  bigHeel: true,
-	  smallHeel: false,
+	  bigHeel: false,
+	  smallHeel: true,
 	  boot: true,
 	  wedge: false,
 	  laces: false,
@@ -39019,8 +39014,8 @@
 	  brown: false,
 	  red: false,
 	  flat: false,
-	  bigHeel: true,
-	  smallHeel: false,
+	  bigHeel: false,
+	  smallHeel: true,
 	  boot: true,
 	  wedge: false,
 	  laces: false,
@@ -39089,7 +39084,7 @@
 	  red: false,
 	  flat: false,
 	  bigHeel: false,
-	  smallHeel: false,
+	  smallHeel: true,
 	  boot: false,
 	  wedge: false,
 	  laces: false,
@@ -39111,8 +39106,8 @@
 	  brown: true,
 	  red: false,
 	  flat: false,
-	  bigHeel: true,
-	  smallHeel: false,
+	  bigHeel: false,
+	  smallHeel: true,
 	  boot: true,
 	  wedge: false,
 	  laces: false,

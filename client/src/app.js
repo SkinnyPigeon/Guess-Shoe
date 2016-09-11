@@ -12,11 +12,11 @@ window.onload = function(){
 
   var computer = new Opponent( playerShoes );
 
-  playerShoes[0].isYourCard = true;
+  playerShoes[5].isYourCard = true;
   var game = new Game( playerShoes, opponentShoes, backupShoes, backupShoesTwo );
   game.opponentPickCard();
 
-  game.playerShoe = game.playerArray[0][0];
+  game.playerShoe = game.playerArray[0][5];
   ReactDOM.render(
     <WhoBox game={ game } computer={ computer }/>,
     document.getElementById('app')

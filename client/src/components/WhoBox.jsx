@@ -127,8 +127,6 @@ var WhoBox = React.createClass({
     var array = this.props.game.playerArray[2];
     var computer = this.props.computer;
     var question = computer.makeGuess();
-    console.log( array );
-    console.log( question[0][0].toString() );
     for( var i = 0; i < array.length; i++ ) {
       var opponentLogic = new Logic( array[i] );
       var playerLogic = new Logic( this.state.playerShoe );
@@ -165,16 +163,12 @@ var WhoBox = React.createClass({
   hideWrongShoes: function( shoe, index ) {
     var display = document.getElementById( index )
     if( shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true ) {
-      this.state.game.playerArray[3].splice( index, 1 );
       display.className = "eliminated";
     }
     if( shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true ) {
-      this.state.game.playerArray[3].splice( index, 1 );
       display.className = "eliminated"
     }
     this.handleTurnDisplay();
-    console.log( this.state.game.playerArray );
-    
   },
 
   onDecorationChange: function( event ) {
