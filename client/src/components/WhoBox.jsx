@@ -3,7 +3,9 @@ var WhoPick = require( './WhoPick' );
 var WhoViewer = require( './WhoViewer' );
 var WhoClues = require( './WhoClues' );
 var WhoTrue = require( './WhoTrue' );
+var WhoWins = require( './WhoWins' );
 var Logic = require( '../models/Logic' );
+var counter = 0;
 
 
 var WhoBox = React.createClass({
@@ -12,11 +14,18 @@ var WhoBox = React.createClass({
     return{ game: this.props.game, shoes: this.props.game.playerArray[0], opponentShoe: this.props.game.opponentShoe, playerShoe: this.props.game.playerShoe, computer: this.props.computer, question: null }
   },
 
-
   componentDidMount: function() {
     this.opponentHandler();
-
     this.handleTurnDisplay();
+  },
+
+  counter: function() {
+    var opponentShoe = document.getElementById( 'opponent-shoe' );
+    counter += 1;
+    console.log( counter );
+    if( counter === 23 ) {
+      opponentShoe.style.display = 'block';
+    }
   },
 
   pickPlayerCard: function( event ) {
@@ -34,7 +43,6 @@ var WhoBox = React.createClass({
   },
 
   onColourChange: function( event ) {
-    // this.props.game.endTurn();
     this.handleTurnDisplay();
     var array = this.props.game.playerArray[1];
     for( var i = 0; i < array.length; i++ ) {
@@ -78,6 +86,7 @@ var WhoBox = React.createClass({
 
     computerQuestions.style.opacity = '0';
     computerQuestions.style.pointerEvents = 'none';
+    this.checkForWinner();
   },
 
   hidePlayer: function() {
@@ -86,7 +95,6 @@ var WhoBox = React.createClass({
     var decorationQuestion = document.getElementById( 'decoration-question' );
 
     var computerQuestions = document.getElementById( 'computer-questions' );
-
 
     colourQuestion.style.pointerEvents = 'none';
     colourQuestion.style.opacity = '0';
@@ -102,7 +110,6 @@ var WhoBox = React.createClass({
   },
 
   onStyleChange: function( event ) {
-    // this.props.game.endTurn();
     this.handleTurnDisplay();
 
     var array = this.props.game.playerArray[1];
@@ -158,18 +165,20 @@ var WhoBox = React.createClass({
   hideWrongShoes: function( shoe, index ) {
     var display = document.getElementById( index )
     if( shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true ) {
+      this.state.game.playerArray[3].splice( index, 1 );
       display.className = "eliminated";
     }
     if( shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true ) {
+      this.state.game.playerArray[3].splice( index, 1 );
       display.className = "eliminated"
     }
     this.handleTurnDisplay();
+    console.log( this.state.game.playerArray );
+    
   },
 
   onDecorationChange: function( event ) {
     this.handleTurnDisplay();
-
-    console.log( event.target.value );
     var array = this.props.game.playerArray[1];
     for( var i = 0; i < array.length; i++ ) {
       var playerLogic = new Logic( array[i] );
@@ -181,6 +190,17 @@ var WhoBox = React.createClass({
     }
   },
 
+  checkForWinner: function() {
+    var playerShoe = document.getElementById( 'player-shoe' );
+    var opponentShoe = document.getElementById( 'opponent-shoe' );
+    if( this.props.game.playerArray[2].length === 1 ) {
+      playerShoe.style.display = 'block';
+    }
+    if( this.props.game.playerArray[3].length === 1 ) {
+      opponentShoe.style.display = 'block';
+    }
+  },
+
 
 
   render: function() {
@@ -189,6 +209,7 @@ var WhoBox = React.createClass({
         <WhoViewer shoes={ this.state.shoes } onClick={ this.eliminateCard } />
         <WhoTrue question={ this.state.question } onClick={ this.opponentHandler }/>
         <WhoClues onColourChange={ this.onColourChange } onStyleChange={ this.onStyleChange } onDecorationChange={ this.onDecorationChange } />
+        <WhoWins playerShoe={ this.props.game.playerShoe } opponentShoe={ this.props.game.opponentShoe }/>
       </div>
     )
   }

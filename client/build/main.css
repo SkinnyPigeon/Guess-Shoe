@@ -102,4 +102,12 @@ p {
   padding-bottom: 0px;
 }
 
+#player-shoe {
+  display: none;
+}
+
+#opponent-shoe {
+  display: none;
+}
+
 

@@ -51,6 +51,7 @@
 	var playerShoes = __webpack_require__(159);
 	var opponentShoes = __webpack_require__(160);
 	var backupShoes = __webpack_require__(171);
+	var backupShoesTwo = __webpack_require__(173);
 	var Game = __webpack_require__(161);
 	var WhoBox = __webpack_require__(164);
 	var Opponent = __webpack_require__(170);
@@ -60,7 +61,7 @@
 	  var computer = new Opponent(playerShoes);
 	
 	  playerShoes[0].isYourCard = true;
-	  var game = new Game(playerShoes, opponentShoes, backupShoes);
+	  var game = new Game(playerShoes, opponentShoes, backupShoes, backupShoesTwo);
 	  game.opponentPickCard();
 	
 	  game.playerShoe = game.playerArray[0][0];
@@ -20893,8 +20894,8 @@
 	
 	var _ = __webpack_require__(162);
 	
-	var Game = function Game(playerShoes, opponentShoes, backupShoes) {
-	  this.playerArray = [playerShoes, opponentShoes, backupShoes];
+	var Game = function Game(playerShoes, opponentShoes, backupShoes, backupShoesTwo) {
+	  this.playerArray = [playerShoes, opponentShoes, backupShoes, backupShoesTwo];
 	  this.currentPlayer = 0;
 	  this.opponentShoe = null;
 	  this.playerShoe = null;
@@ -37700,7 +37701,9 @@
 	var WhoViewer = __webpack_require__(166);
 	var WhoClues = __webpack_require__(167);
 	var WhoTrue = __webpack_require__(168);
+	var WhoWins = __webpack_require__(172);
 	var Logic = __webpack_require__(169);
+	var _counter = 0;
 	
 	var WhoBox = React.createClass({
 	  displayName: 'WhoBox',
@@ -37712,8 +37715,16 @@
 	
 	  componentDidMount: function componentDidMount() {
 	    this.opponentHandler();
-	
 	    this.handleTurnDisplay();
+	  },
+	
+	  counter: function counter() {
+	    var opponentShoe = document.getElementById('opponent-shoe');
+	    _counter += 1;
+	    console.log(_counter);
+	    if (_counter === 23) {
+	      opponentShoe.style.display = 'block';
+	    }
 	  },
 	
 	  pickPlayerCard: function pickPlayerCard(event) {
@@ -37731,7 +37742,6 @@
 	  },
 	
 	  onColourChange: function onColourChange(event) {
-	    // this.props.game.endTurn();
 	    this.handleTurnDisplay();
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
@@ -37774,6 +37784,7 @@
 	
 	    computerQuestions.style.opacity = '0';
 	    computerQuestions.style.pointerEvents = 'none';
+	    this.checkForWinner();
 	  },
 	
 	  hidePlayer: function hidePlayer() {
@@ -37797,7 +37808,6 @@
 	  },
 	
 	  onStyleChange: function onStyleChange(event) {
-	    // this.props.game.endTurn();
 	    this.handleTurnDisplay();
 	
 	    var array = this.props.game.playerArray[1];
@@ -37853,18 +37863,19 @@
 	  hideWrongShoes: function hideWrongShoes(shoe, index) {
 	    var display = document.getElementById(index);
 	    if (shoe.isCorrect === true && this.state.opponentShoe.isCorrect != true) {
+	      this.state.game.playerArray[3].splice(index, 1);
 	      display.className = "eliminated";
 	    }
 	    if (shoe.isCorrect != true && this.state.opponentShoe.isCorrect === true) {
+	      this.state.game.playerArray[3].splice(index, 1);
 	      display.className = "eliminated";
 	    }
 	    this.handleTurnDisplay();
+	    console.log(this.state.game.playerArray);
 	  },
 	
 	  onDecorationChange: function onDecorationChange(event) {
 	    this.handleTurnDisplay();
-	
-	    console.log(event.target.value);
 	    var array = this.props.game.playerArray[1];
 	    for (var i = 0; i < array.length; i++) {
 	      var playerLogic = new Logic(array[i]);
@@ -37876,13 +37887,25 @@
 	    }
 	  },
 	
+	  checkForWinner: function checkForWinner() {
+	    var playerShoe = document.getElementById('player-shoe');
+	    var opponentShoe = document.getElementById('opponent-shoe');
+	    if (this.props.game.playerArray[2].length === 1) {
+	      playerShoe.style.display = 'block';
+	    }
+	    if (this.props.game.playerArray[3].length === 1) {
+	      opponentShoe.style.display = 'block';
+	    }
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(WhoViewer, { shoes: this.state.shoes, onClick: this.eliminateCard }),
 	      React.createElement(WhoTrue, { question: this.state.question, onClick: this.opponentHandler }),
-	      React.createElement(WhoClues, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange })
+	      React.createElement(WhoClues, { onColourChange: this.onColourChange, onStyleChange: this.onStyleChange, onDecorationChange: this.onDecorationChange }),
+	      React.createElement(WhoWins, { playerShoe: this.props.game.playerShoe, opponentShoe: this.props.game.opponentShoe })
 	    );
 	  }
 	
@@ -38809,6 +38832,598 @@
 	var backupShoes = [beigeHeeledBoot, beigeLowBootStudded, beigeOpenHeelBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded];
 	
 	module.exports = backupShoes;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var WhoWins = function WhoWins(props) {
+	
+	  return React.createElement(
+	    "div",
+	    null,
+	    React.createElement(
+	      "h1",
+	      { id: "player-shoe" },
+	      "Your shoe is ",
+	      props.playerShoe.name
+	    ),
+	    React.createElement(
+	      "h1",
+	      { id: "opponent-shoe" },
+	      "Congratulations, their shoe was ",
+	      props.opponentShoe.name
+	    )
+	  );
+	};
+	
+	module.exports = WhoWins;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var beigeHeeledBoot = {
+	  name: "Puffy Ugly Beige Shoe",
+	  image: "/images/beige-heeled-boot.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: true,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: true,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var beigeLowBootStudded = {
+	  name: "Spikey Balsa-Wood Heeled Boot",
+	  image: "/images/beige-low-boot-studded.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: true,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: true,
+	  boot: true,
+	  wedge: false,
+	  laces: false,
+	  studded: true,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var beigeOpenHeelBuckleStuddedHeel = {
+	  name: "Impractical",
+	  image: "/images/beige-open-heel-buckle-studded-heel.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: true,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: false,
+	  studded: true,
+	  buckle: true,
+	  openToe: false,
+	  openHeel: true
+	};
+	
+	var beigeOpenToeOpenHeelWedge = {
+	  name: "The Unlwalkable In",
+	  image: "/images/beige-open-toe-open-heel-wedge.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: true,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: true,
+	  laces: true,
+	  studded: false,
+	  buckle: false,
+	  openToe: true,
+	  openHeel: true
+	};
+	
+	var beigeWedgeBoot = {
+	  name: "Tiptoe Sweat Boxes",
+	  image: "/images/beige-wedge-boot.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: true,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: true,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var blackFlatBuckle = {
+	  name: "A Normal Black Shoe",
+	  image: "/images/black-flat-buckle.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: true,
+	  brown: false,
+	  red: false,
+	  flat: true,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: true,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var blackHeelBootOpenToe = {
+	  name: "Walk Awkard In Black",
+	  image: "/images/black-heeled-boot-open-toe.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: true,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: true,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: true,
+	  openHeel: false
+	};
+	
+	var blackHeeledLaces = {
+	  name: "Impossible Heel",
+	  image: "/images/black-heeled-laces.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: true,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: true,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var blackHeeledToe = {
+	  name: "A Long Way To Fall",
+	  image: "/images/black-heeled-toe.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: true,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: true,
+	  openHeel: false
+	};
+	
+	var blackOpenHeel = {
+	  name: "Not Too Bad, Standard Black Shoe",
+	  image: "/images/black-open-heel.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: true,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var brownBuckleHeeledBoot = {
+	  name: "Needless Boot With Too Many Buckles",
+	  image: "/images/brown-buckle-heeled-boot.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: true,
+	  red: false,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: true,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: true,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var brownHeeledStuddedOpenToe = {
+	  name: "The Ball Crusher",
+	  image: "/images/brown-heeled-studded-open-toe.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: true,
+	  red: false,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: false,
+	  studded: true,
+	  buckle: false,
+	  openToe: true,
+	  openHeel: false
+	};
+	
+	var brownOpenToeLaces = {
+	  name: "Fancy Gladiator",
+	  image: "/images/brown-open-toe-laces.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: true,
+	  red: false,
+	  flat: true,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: true,
+	  studded: false,
+	  buckle: false,
+	  openToe: true,
+	  openHeel: false
+	};
+	
+	var brownWedge = {
+	  name: "Hill Walk In Style",
+	  image: "/images/brown-wedge.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: true,
+	  red: false,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: true,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var redBootHeeledToe = {
+	  name: "Rocky Horror",
+	  image: "/images/red-boot-heeled-toe.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: true,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: true,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: true,
+	  openHeel: false
+	};
+	
+	var redHeeledLaces = {
+	  name: "Scarlet Pimpernel",
+	  image: "/images/red-heeled-laces.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: true,
+	  flat: false,
+	  bigHeel: true,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: true,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var redOpenHeelBuckle = {
+	  name: "Dorathy's Heel",
+	  image: "/images/red-open-heel-buckle.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: true,
+	  flat: true,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: true,
+	  openToe: false,
+	  openHeel: true
+	};
+	
+	var redWedgeBoot = {
+	  name: "The Eddie Izzard",
+	  image: "/images/red-wedge-boot.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: true,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: true,
+	  wedge: true,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var redWedge = {
+	  name: "Too Busy",
+	  image: "/images/red-wedge.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: false,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: true,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: true,
+	  laces: false,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var whiteFlatLaces = {
+	  name: "Plain Bowling Shoe",
+	  image: "/images/white-flat-laces.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: true,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: true,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: true,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var whiteLacesOpenToeFlat = {
+	  name: "Missing A Few Bits",
+	  image: "/images/white-laces-open-toe-flat.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: true,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: true,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: false,
+	  laces: true,
+	  studded: false,
+	  buckle: false,
+	  openToe: true,
+	  openHeel: false
+	};
+	
+	var whiteLowLaced = {
+	  name: "The Dolly",
+	  image: "/images/white-low-laced.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: true,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: true,
+	  boot: false,
+	  wedge: false,
+	  laces: true,
+	  studded: false,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var whiteLowOpenHeeledBuckle = {
+	  name: "They Look Fine",
+	  image: "/images/white-low-open-heeled-buckle.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: true,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: true,
+	  boot: false,
+	  wedge: false,
+	  laces: false,
+	  studded: false,
+	  buckle: true,
+	  openToe: false,
+	  openHeel: true
+	};
+	
+	var whiteWedgeStudded = {
+	  name: "Nike Gone Mad",
+	  image: "/images/white-wedge-studded.jpg",
+	  isYourCard: false,
+	  isTheirCard: false,
+	  isEliminated: false,
+	  white: true,
+	  beige: false,
+	  black: false,
+	  brown: false,
+	  red: false,
+	  flat: false,
+	  bigHeel: false,
+	  smallHeel: false,
+	  boot: false,
+	  wedge: true,
+	  laces: false,
+	  studded: true,
+	  buckle: false,
+	  openToe: false,
+	  openHeel: false
+	};
+	
+	var backupShoesTwo = [beigeHeeledBoot, beigeLowBootStudded, beigeOpenHeelBuckleStuddedHeel, beigeOpenToeOpenHeelWedge, beigeWedgeBoot, blackFlatBuckle, blackHeelBootOpenToe, blackHeeledLaces, blackHeeledToe, blackOpenHeel, brownBuckleHeeledBoot, brownHeeledStuddedOpenToe, brownOpenToeLaces, brownWedge, redBootHeeledToe, redHeeledLaces, redOpenHeelBuckle, redWedgeBoot, redWedge, whiteFlatLaces, whiteLacesOpenToeFlat, whiteLowLaced, whiteLowOpenHeeledBuckle, whiteWedgeStudded];
+	
+	module.exports = backupShoesTwo;
 
 /***/ }
 /******/ ]);
