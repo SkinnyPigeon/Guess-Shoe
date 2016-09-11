@@ -13,7 +13,7 @@ describe( 'The Game: ', function() {
   })
 
   it( 'Should be able to see the cards', function() {
-    assert.equal( 2, game.playerArray.length );
+    assert.equal( 4, game.playerArray.length );
   });
 
   it( 'Should let the player select a card', function() {
